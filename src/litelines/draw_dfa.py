@@ -3,7 +3,7 @@ from typing import Optional
 
 import graphviz
 from graphviz import Digraph
-from transformers import PreTrainedTokenizer
+from .utils import PreTrainedTokenizer
 
 def create_row(
     token_id: int,

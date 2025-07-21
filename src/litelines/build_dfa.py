@@ -17,8 +17,7 @@ import xxhash
 from numpy.typing import NDArray
 from outlines_core.fsm.regex import create_fsm_index_tokenizer, make_deterministic_fsm
 from pydantic import BaseModel
-from transformers import PreTrainedTokenizer
-
+from .utils import PreTrainedTokenizer
 
 class Hasher:
     """Hasher that accepts python objects as inputs."""
@@ -80,7 +79,7 @@ class Tokenizer(Hashable, Protocol):
 class TransformerTokenizer(Tokenizer):
     """Represents a tokenizer for models in the `transformers` library."""
 
-    def __init__(self, tokenizer: "PreTrainedTokenizer", **kwargs):
+    def __init__(self, tokenizer: PreTrainedTokenizer, **kwargs):
         self.tokenizer = tokenizer
         self.eos_token_id = self.tokenizer.eos_token_id
         self.eos_token = self.tokenizer.eos_token
