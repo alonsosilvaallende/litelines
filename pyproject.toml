@@ -7,5 +7,6 @@ requires-python = ">=3.12"
 dependencies = [
     "graphviz==0.21",
     "outlines-core==0.1.14",
+    "pydantic>=2.11.7",
     "xxhash==3.5.0",
 ]
