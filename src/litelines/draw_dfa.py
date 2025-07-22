@@ -2,7 +2,7 @@ from collections import defaultdict
 from typing import Optional
 
 import graphviz
-from graphviz import Digraph
+from graphviz import Digraph, Source
 from .utils import PreTrainedTokenizer
 
 def create_row(
