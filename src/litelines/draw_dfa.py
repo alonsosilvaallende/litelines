@@ -1,8 +1,10 @@
 from collections import defaultdict
-from typing import Optional
+from typing import Optional, Type, Union
 
 import graphviz
 from graphviz import Digraph, Source
+from pydantic import BaseModel
+from .build_dfa import build_dfa
 from .utils import PreTrainedTokenizer
 
 def create_row(
@@ -39,16 +41,42 @@ def create_table(
     return table_str
 
 def draw_dfa(
-    dfa: dict[int, dict[int, int]],
+    dfa: Union[dict[int, dict[int, int]], str, Type[BaseModel]],
     tokenizer: PreTrainedTokenizer,
+    whitespace_pattern: Optional[str] = r"[\n\t\r ]*",
     max_labels_per_edge: Optional[int] = 3,
     remove_outer_whitespace: Optional[bool] = True,
     render: Optional[bool] = True,
 ) -> graphviz.sources.Source:
+
+    if isinstance(dfa, dict) and all(
+        isinstance(k, int)
+        and isinstance(v, dict)
+        and all(isinstance(k2, int) and isinstance(v2, int) for k2, v2 in v.items())
+        for k, v in dfa.items()
+    ):
+        dfa = dfa
+        regex = '' # Don't know how to generate the regex from the dfa
+    elif isinstance(dfa, str):
+        dfa = build_dfa(dfa, tokenizer=tokenizer, whitespace_pattern=whitespace_pattern)
+        regex = build_regex(dfa, whitespace_pattern=whitespace_pattern)
+    elif issubclass(dfa, BaseModel):
+        dfa = build_dfa(dfa, tokenizer=tokenizer, whitespace_pattern=whitespace_pattern)
+        regex = build_regex(dfa, whitespace_pattern=whitespace_pattern)
+    else:
+        raise ValueError(
+            f"Cannot parse schema {dfa}. The schema must be either "
+            + "a Pydantic class, a dict[int, dict[int, int]] or a string that contains the JSON "
+            + "schema specification"
+        )
+
     states = range(len(dfa) + 1)
     initial_state = 0
     final_states = {state for state in states if state not in list(dfa.keys())}
-    graph_str = """// Allowed Transitions Graph\ndigraph {\n\trankdir=LR;ratio=0.1;"""
+    graph_str = '// Allowed Transitions Graph\ndigraph {'
+    if regex != '':
+        graph_str += f'\n\tgraph [label="DFA for the REGEX: {regex}",labelloc="tl",labeljust="l",fontsize=60]'
+    graph_str += '\n\trankdir=LR;ratio=0.1;'
     # Add states to the graph
     for state in states:
         if state in final_states:
