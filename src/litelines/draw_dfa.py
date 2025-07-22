@@ -59,11 +59,11 @@ def draw_dfa(
         dfa = dfa
         regex = '' # Don't know how to generate the regex from the dfa
     elif isinstance(dfa, str):
-        dfa = build_dfa(dfa, tokenizer=tokenizer, whitespace_pattern=whitespace_pattern)
         regex = build_regex(dfa, whitespace_pattern=whitespace_pattern)
+        dfa = build_dfa(dfa, tokenizer=tokenizer, whitespace_pattern=whitespace_pattern)
     elif issubclass(dfa, BaseModel):
-        dfa = build_dfa(dfa, tokenizer=tokenizer, whitespace_pattern=whitespace_pattern)
         regex = build_regex(dfa, whitespace_pattern=whitespace_pattern)
+        dfa = build_dfa(dfa, tokenizer=tokenizer, whitespace_pattern=whitespace_pattern)
     else:
         raise ValueError(
             f"Cannot parse schema {dfa}. The schema must be either "
