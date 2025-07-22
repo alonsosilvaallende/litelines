@@ -85,7 +85,7 @@ class JSONProcessor(LogitsProcessor):
             self.token_taken = input_ids[:, -1].item()
             if self.verbose:
                 print(
-                    f"\x1b[32m\ntoken taken: {self.token_taken}: {repr(tokenizer.decode([self.token_taken]))}\x1b[0m"
+                    f"\x1b[32m\ntoken taken: {self.token_taken}: {repr(self.tokenizer.decode([self.token_taken]))}\x1b[0m"
                 )
             if self.verbose:
                 print(f"mapping: {self.dfa[self.current_state]}")
@@ -106,7 +106,7 @@ class JSONProcessor(LogitsProcessor):
         scores_processed = scores.clone()
 
         if self.current_state in self.final_states:
-            allowed_tokens = [tokenizer.eos_token_id]
+            allowed_tokens = [self.tokenizer.eos_token_id]
         else:
             if self.same_state_visit_count < self.max_same_state_visit_count:
                 allowed_tokens = list(self.dfa[self.current_state].keys())
