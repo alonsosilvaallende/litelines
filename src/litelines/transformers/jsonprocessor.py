@@ -1,3 +1,7 @@
+from typing import Optional, Type, Union
+
+import torch
+from pydantic import BaseModel
 from transformers import LogitsProcessor, PreTrainedTokenizer
 from ..build_dfa import build_dfa
 
