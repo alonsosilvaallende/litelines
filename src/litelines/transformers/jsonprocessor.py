@@ -1,5 +1,4 @@
-from transformers import PreTrainedTokenizer
-from transformers.generation import LogitsProcessor
+from transformers import LogitsProcessor, PreTrainedTokenizer
 from ..build_dfa import build_dfa
 
 
