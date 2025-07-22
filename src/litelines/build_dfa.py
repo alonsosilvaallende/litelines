@@ -1,3 +1,4 @@
+from pickle import dumps
 from typing import (
     Any,
     Dict,
@@ -125,7 +126,6 @@ class TransformerTokenizer(Tokenizer):
         return NotImplemented
 
     def __hash__(self):
-        from datasets.fingerprint import Hasher
 
         return hash(Hasher.hash(self.tokenizer))
 
