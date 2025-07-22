@@ -148,16 +148,16 @@ def is_json(string):
 def build_dfa(
     regex_str: Union[str, Type[BaseModel]],
     tokenizer: PreTrainedTokenizer,
-    use_tools: Optional[bool] = False,
+    include_tool_call: Optional[bool] = False,
     whitespace_pattern: Optional[str] = r"[\n\t\r ]*",
 ) -> dict[int, dict[int, int]]:
     if isinstance(regex_str, str) and is_json(regex_str):
         regex_str = build_regex(
-            regex_str, use_tools=use_tools, whitespace_pattern=whitespace_pattern
+            regex_str, include_tool_call=include_tool_call, whitespace_pattern=whitespace_pattern
         )
     elif issubclass(regex_str, BaseModel):
         regex_str = build_regex(
-            regex_str, use_tools=use_tools, whitespace_pattern=whitespace_pattern
+            regex_str, include_tool_call=include_tool_call, whitespace_pattern=whitespace_pattern
         )
     else:
         raise ValueError(
