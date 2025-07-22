@@ -6,8 +6,8 @@ readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
     "outlines-core==0.1.14",
-    "numpy>=2.3.1",
-    "graphviz==0.21",
-    "pydantic>=2.11.7",
-    "xxhash==3.5.0",
+    "numpy",
+    "graphviz",
+    "pydantic",
+    "xxhash",
 ]
