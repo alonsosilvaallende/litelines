@@ -11,12 +11,14 @@ from typing import (
     Union,
 )
 
+import json
 import interegular
 import numpy as np
 import xxhash
 from numpy.typing import NDArray
 from outlines_core.fsm.regex import create_fsm_index_tokenizer, make_deterministic_fsm
 from pydantic import BaseModel
+from .build_regex import build_regex
 from .utils import PreTrainedTokenizer
 
 class Hasher:
@@ -135,15 +137,33 @@ class TransformerTokenizer(Tokenizer):
         self.__init__(state["tokenizer"])
 
 
+
+def is_json(string):
+    try:
+        json.loads(string)
+        return True
+    except json.JSONDecodeError:
+        return False
+
 def build_dfa(
     regex_str: Union[str, Type[BaseModel]],
     tokenizer: PreTrainedTokenizer,
     use_tools: Optional[bool] = False,
     whitespace_pattern: Optional[str] = r"[\n\t\r ]*",
 ) -> dict[int, dict[int, int]]:
-    if issubclass(regex_str, BaseModel):
+    if isinstance(regex_str, str) and is_json(regex_str):
         regex_str = build_regex(
             regex_str, use_tools=use_tools, whitespace_pattern=whitespace_pattern
+        )
+    elif issubclass(regex_str, BaseModel):
+        regex_str = build_regex(
+            regex_str, use_tools=use_tools, whitespace_pattern=whitespace_pattern
+        )
+    else:
+        raise ValueError(
+            f"Cannot parse schema {regex_str}. The schema must be either "
+            + "a Pydantic class, a dictionary or a string that contains the JSON "
+            + "schema specification"
         )
     list_of_strings_fsm = interegular.parse_pattern(regex_str).to_fsm()
     new_fsm, _ = make_deterministic_fsm(list_of_strings_fsm)
