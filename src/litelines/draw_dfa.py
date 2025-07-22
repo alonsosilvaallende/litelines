@@ -5,6 +5,7 @@ import graphviz
 from graphviz import Digraph, Source
 from pydantic import BaseModel
 from .build_dfa import build_dfa
+from .build_regex import build_regex
 from .utils import PreTrainedTokenizer
 
 def create_row(
