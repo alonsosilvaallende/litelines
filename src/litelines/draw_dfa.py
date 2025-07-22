@@ -76,7 +76,9 @@ def draw_dfa(
     final_states = {state for state in states if state not in list(dfa.keys())}
     graph_str = '// Allowed Transitions Graph\ndigraph {'
     if regex != '':
-        graph_str += f'\n\tgraph [label="DFA for the REGEX: {regex}",labelloc="tl",labeljust="l",fontsize=60]'
+        escaped_regex = f'{regex.replace("{", "\\{").replace("}", "\\}")}'
+        escaped_regex = f'{escaped_regex}'.replace('"', '\\"')
+        graph_str += f'\n\tgraph [label="Deterministic Finite Automaton\nfor the regular expression:\n{escaped_regex}",labelloc="tl",labeljust="l",fontsize=40]'
     graph_str += '\n\trankdir=LR;ratio=0.1;'
     # Add states to the graph
     for state in states:
