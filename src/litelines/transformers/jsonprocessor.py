@@ -28,6 +28,7 @@ class JSONProcessor(LogitsProcessor):
         self.previous_state = None
         self.final_states = None
         self.token_taken = None
+        self.trajectory = []
         self.previous_input_ids = None
 
     def reset_state(self):
@@ -91,6 +92,7 @@ class JSONProcessor(LogitsProcessor):
             self.previous_input_ids = input_ids.clone()
         else:
             self.token_taken = input_ids[:, -1].item()
+            self.trajectory.append(self.token_taken)
             if self.verbose:
                 print(
                     f"\x1b[32m\ntoken taken: {self.token_taken}: {repr(self.tokenizer.decode([self.token_taken]))}\x1b[0m"
