@@ -11,12 +11,14 @@ class JSONProcessor(LogitsProcessor):
         self,
         response_format=Union[str, dict[int, dict[int, int]], Type[BaseModel]],
         tokenizer=PreTrainedTokenizer,
+        include_tool_call: Optional[bool] = False,
         whitespace_pattern: Optional[str] = r"[\n\t\r ]*",
         verbose=False,
         max_same_state_visit_count=5,
     ):
         self.response_format = response_format
         self.tokenizer = tokenizer
+        self.include_tool_call = include_tool_call
         self.whitespace_pattern = whitespace_pattern
         self.dfa = None
         self.verbose = verbose
@@ -56,11 +58,17 @@ class JSONProcessor(LogitsProcessor):
             ):
                 self.dfa = self.response_format
             elif isinstance(self.response_format, str):
-                self.dfa = build_dfa(self.response_format)
+                self.dfa = build_dfa(
+                    self.response_format,
+                    self.tokenizer,
+                    include_tool_call=self.include_tool_call,
+                    whitespace_pattern=self.whitespace_pattern,
+                )
             elif issubclass(self.response_format, BaseModel):
                 self.dfa = build_dfa(
                     self.response_format,
                     self.tokenizer,
+                    include_tool_call=self.include_tool_call,
                     whitespace_pattern=self.whitespace_pattern,
                 )
             else:
