@@ -8,6 +8,22 @@ from .build_dfa import build_dfa
 from .build_regex import build_regex
 from .utils import PreTrainedTokenizer
 
+def from_token_trajectory_to_state_trajectory(
+    token_trajectory: list, dfa: dict[int, dict[int, int]]
+) -> list:
+    state_trajectory = {}
+    previous_state = None
+    current_state = 0
+    for i, token_id in enumerate(token_trajectory):
+        if current_state not in state_trajectory.keys():
+            state_trajectory[current_state] = [dfa[current_state][token_id]]
+        else:
+            if dfa[current_state][token_id] not in state_trajectory[current_state]:
+                state_trajectory[current_state].append(dfa[current_state][token_id])
+        previous_state = current_state
+        current_state = dfa[current_state][token_id]
+    return state_trajectory
+
 def create_row(
     token_id: int,
     tokenizer: PreTrainedTokenizer,
@@ -44,6 +60,7 @@ def create_table(
 def draw_dfa(
     dfa: Union[dict[int, dict[int, int]], str, Type[BaseModel]],
     tokenizer: PreTrainedTokenizer,
+    trajectory: Optional[list] = [],
     include_tool_call: Optional[bool] = False,
     whitespace_pattern: Optional[str] = r"[\n\t\r ]*",
     max_labels_per_edge: Optional[int] = 3,
@@ -107,6 +124,9 @@ def draw_dfa(
                     max_labels_per_edge=3,
                     remove_outer_whitespace=True,
                 )
-                graph_str += f"\n\t{state} -> {next_state} [label={table_str}]"
+                if state_trajectory != {} and state in state_trajectory.keys() and next_state in state_trajectory[state]:
+                    graph_str += f"\n\t{state} -> {next_state} [label={table_str} color=red]"
+                else:
+                    graph_str += f"\n\t{state} -> {next_state} [label={table_str}]"
     graph_str += "\n}\n"
     return Source(graph_str) if render else graph_str
