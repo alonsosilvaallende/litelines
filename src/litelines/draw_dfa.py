@@ -47,6 +47,7 @@ def draw_dfa(
     whitespace_pattern: Optional[str] = r"[\n\t\r ]*",
     max_labels_per_edge: Optional[int] = 3,
     remove_outer_whitespace: Optional[bool] = True,
+    verbose: Optional[bool] = False,
     render: Optional[bool] = True,
 ) -> graphviz.sources.Source:
 
@@ -57,12 +58,15 @@ def draw_dfa(
         for k, v in dfa.items()
     ):
         dfa = dfa
-        regex = '' # Don't know how to generate the regex from the dfa
     elif isinstance(dfa, str):
-        regex = build_regex(dfa, whitespace_pattern=whitespace_pattern)
+        if verbose:
+            regex = build_regex(dfa, whitespace_pattern=whitespace_pattern)
+            print(f"\x1b[34mRegular expression: {repr(regex)}\x1b[0m")
         dfa = build_dfa(dfa, tokenizer=tokenizer, whitespace_pattern=whitespace_pattern)
     elif issubclass(dfa, BaseModel):
-        regex = build_regex(dfa, whitespace_pattern=whitespace_pattern)
+        if verbose:
+            regex = build_regex(dfa, whitespace_pattern=whitespace_pattern)
+            print(f"\x1b[34mRegular expression: {repr(regex)}\x1b[0m")
         dfa = build_dfa(dfa, tokenizer=tokenizer, whitespace_pattern=whitespace_pattern)
     else:
         raise ValueError(
@@ -75,10 +79,7 @@ def draw_dfa(
     initial_state = 0
     final_states = {state for state in states if state not in list(dfa.keys())}
     graph_str = '// Allowed Transitions Graph\ndigraph {'
-    if regex != '':
-        escaped_regex = f'{regex.replace("{", "\\{").replace("}", "\\}")}'
-        escaped_regex = f'{escaped_regex}'.replace('"', '\\"')
-        graph_str += f'\n\tgraph [label="Deterministic Finite Automaton\nfor the regular expression:\n{escaped_regex}",labelloc="tl",labeljust="l",fontsize=40]'
+    graph_str += f'\n\tgraph [label="Allowed Transition Automaton",labelloc="t",labeljust="l",fontsize=40]'
     graph_str += '\n\trankdir=LR;ratio=0.1;'
     # Add states to the graph
     for state in states:
