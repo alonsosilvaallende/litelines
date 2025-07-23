@@ -93,6 +93,8 @@ def draw_dfa(
             + "schema specification"
         )
 
+    if trajectory!=[]: state_trajectory = from_token_trajectory_to_state_trajectory(trajectory,dfa)
+
     states = range(len(dfa) + 1)
     initial_state = 0
     final_states = {state for state in states if state not in list(dfa.keys())}
@@ -124,7 +126,7 @@ def draw_dfa(
                     max_labels_per_edge=3,
                     remove_outer_whitespace=True,
                 )
-                if state_trajectory != {} and state in state_trajectory.keys() and next_state in state_trajectory[state]:
+                if trajectory != [] and state_trajectory != {} and state in state_trajectory.keys() and next_state in state_trajectory[state]:
                     graph_str += f"\n\t{state} -> {next_state} [label={table_str} color=red]"
                 else:
                     graph_str += f"\n\t{state} -> {next_state} [label={table_str}]"
