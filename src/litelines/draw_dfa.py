@@ -44,6 +44,7 @@ def create_table(
 def draw_dfa(
     dfa: Union[dict[int, dict[int, int]], str, Type[BaseModel]],
     tokenizer: PreTrainedTokenizer,
+    include_tool_call: Optional[bool] = False,
     whitespace_pattern: Optional[str] = r"[\n\t\r ]*",
     max_labels_per_edge: Optional[int] = 3,
     remove_outer_whitespace: Optional[bool] = True,
@@ -60,14 +61,14 @@ def draw_dfa(
         dfa = dfa
     elif isinstance(dfa, str):
         if verbose:
-            regex = build_regex(dfa, whitespace_pattern=whitespace_pattern)
+            regex = build_regex(dfa, include_tool_call=include_tool_call, whitespace_pattern=whitespace_pattern)
             print(f"\x1b[34mRegular expression: {repr(regex)}\x1b[0m")
-        dfa = build_dfa(dfa, tokenizer=tokenizer, whitespace_pattern=whitespace_pattern)
+        dfa = build_dfa(dfa, tokenizer=tokenizer, include_tool_call=include_tool_call, whitespace_pattern=whitespace_pattern)
     elif issubclass(dfa, BaseModel):
         if verbose:
-            regex = build_regex(dfa, whitespace_pattern=whitespace_pattern)
+            regex = build_regex(dfa,include_tool_call=include_tool_call, whitespace_pattern=whitespace_pattern)
             print(f"\x1b[34mRegular expression: {repr(regex)}\x1b[0m")
-        dfa = build_dfa(dfa, tokenizer=tokenizer, whitespace_pattern=whitespace_pattern)
+        dfa = build_dfa(dfa, tokenizer=tokenizer, include_tool_call=include_tool_call, whitespace_pattern=whitespace_pattern)
     else:
         raise ValueError(
             f"Cannot parse schema {dfa}. The schema must be either "
