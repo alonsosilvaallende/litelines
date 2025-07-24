@@ -27,7 +27,7 @@ class JSONProcessor(LogitsProcessor):
         self.current_state = 0
         self.previous_state = None
         self.final_states = None
-        self.token_taken = None
+        self.selected_token = None
         self.trajectory = []
         self.previous_input_ids = None
 
@@ -35,7 +35,7 @@ class JSONProcessor(LogitsProcessor):
         """Reset the processor to its initial state"""
         self.current_state = 0
         self.final_states = None
-        self.token_taken = None
+        self.selected_token = None
 
     def __call__(
         self, input_ids: torch.LongTensor, scores: torch.FloatTensor
@@ -91,16 +91,16 @@ class JSONProcessor(LogitsProcessor):
                 print(f"final states: {self.final_states}")
             self.previous_input_ids = input_ids.clone()
         else:
-            self.token_taken = input_ids[:, -1].item()
-            self.trajectory.append(self.token_taken)
+            self.selected_token = input_ids[:, -1].item()
+            self.trajectory.append(self.selected_token)
             if self.verbose:
                 print(
-                    f"\x1b[32m\ntoken taken: {self.token_taken}: {repr(self.tokenizer.decode([self.token_taken]))}\x1b[0m"
+                    f"\x1b[32mselected token: {self.selected_token}: {repr(self.tokenizer.decode([self.selected_token]))}\x1b[0m"
                 )
             if self.verbose:
                 print(f"mapping: {self.dfa[self.current_state]}")
             self.previous_state = self.current_state
-            self.current_state = self.dfa[self.current_state][self.token_taken]
+            self.current_state = self.dfa[self.current_state][self.selected_token]
             if self.previous_state == self.current_state:
                 self.same_state_visit_count += 1
             else:
