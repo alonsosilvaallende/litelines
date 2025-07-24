@@ -71,11 +71,15 @@ def create_row(
         str: An HTML-formatted table row string containing the token ID (in blue) and its decoded value
     """
     token = (
-        tokenizer.decode([token_id]).strip()
+        (tokenizer.decode([token_id]).strip())
         if remove_outer_whitespace
         else tokenizer.decode([token_id])
     )
-    row = f"""<tr><td align="right"><font color="#00b4d8">{token_id}</font></td><td>{token}</td></tr>"""
+    escaped_token = build_escaped_label(token)
+    if contains_control_chars(escaped_token):
+        row = f"""<tr><td align="right"><font color="#00b4d8">{token_id}</font></td><td></td></tr>"""
+    else:
+        row = f"""<tr><td align="right"><font color="#00b4d8">{token_id}</font></td><td>{escaped_token}</td></tr>"""
     return row
 
 def create_table(
