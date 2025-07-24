@@ -37,7 +37,7 @@ def build_escaped_label(label: str) -> str:
         ' -> &apos;
         [ -> &#91;
         ] -> &#93;
-        \ -> &#92;
+        \\ -> &#92;
     """
     html_entities = {
         '&': '&amp;',
