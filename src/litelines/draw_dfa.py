@@ -206,16 +206,21 @@ def draw_dfa(
         if verbose:
             regex = build_regex(dfa, include_tool_call=include_tool_call, whitespace_pattern=whitespace_pattern)
             if include_tool_call:
-                print(f"\x1b[34mTool call start: {tool_call_start} +\x1b[0m")
-                print(f"\x1b[34mRegular expression: {repr(regex)} +\x1b[0m")
-                print(f"\x1b[34mTool call end {tool_call_end}\x1b[0m")
+                print(f"\x1b[34mTool call start:     {tool_call_start} +\x1b[0m")
+                print(f"\x1b[34mRegular expression:  {repr(regex)} +\x1b[0m")
+                print(f"\x1b[34mTool call end:       {tool_call_end}\x1b[0m")
             else:
-                print(f"\x1b[34mRegular expression: {repr(regex)}\x1b[0m")
+                print(f"\x1b[34mRegular expression:  {repr(regex)}\x1b[0m")
         dfa = build_dfa(dfa, tokenizer=tokenizer, include_tool_call=include_tool_call, whitespace_pattern=whitespace_pattern)
     elif issubclass(dfa, BaseModel):
         if verbose:
             regex = build_regex(dfa,include_tool_call=include_tool_call, whitespace_pattern=whitespace_pattern)
-            print(f"\x1b[34mRegular expression: {repr(regex)}\x1b[0m")
+            if include_tool_call:
+                print(f"\x1b[34mTool call start:     {tool_call_start} +\x1b[0m")
+                print(f"\x1b[34mRegular expression:  {repr(regex)} +\x1b[0m")
+                print(f"\x1b[34mTool call end:       {tool_call_end}\x1b[0m")
+            else:
+                print(f"\x1b[34mRegular expression:  {repr(regex)}\x1b[0m")
         dfa = build_dfa(dfa, tokenizer=tokenizer, include_tool_call=include_tool_call, whitespace_pattern=whitespace_pattern)
     else:
         raise ValueError(
