@@ -1,8 +1,10 @@
+import re
 from typing import Optional, Type, Union
 
 import torch
 from pydantic import BaseModel
 from transformers import LogitsProcessor, PreTrainedTokenizer
+
 from ..build_dfa import build_dfa
 
 
@@ -101,7 +103,10 @@ class JSONProcessor(LogitsProcessor):
                 print(f"mapping: {self.dfa[self.current_state]}")
             self.previous_state = self.current_state
             self.current_state = self.dfa[self.current_state][self.selected_token]
-            if self.previous_state == self.current_state:
+            if (
+                self.previous_state == self.current_state
+                and re.fullmatch(whitespace_pattern, self.selected_token) is not None
+            ):
                 self.same_state_visit_count += 1
             else:
                 self.same_state_visit_count = 0
