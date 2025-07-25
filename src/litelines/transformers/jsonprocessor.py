@@ -42,7 +42,6 @@ class JSONProcessor(LogitsProcessor):
     def __call__(
         self, input_ids: torch.LongTensor, scores: torch.FloatTensor
     ) -> torch.FloatTensor:
-        current_length = input_ids.shape[-1]
 
         if self.previous_input_ids is not None:
             # Check if we're continuing from the previous sequence
@@ -105,7 +104,7 @@ class JSONProcessor(LogitsProcessor):
             self.current_state = self.dfa[self.current_state][self.selected_token]
             if (
                 self.previous_state == self.current_state
-                and re.fullmatch(whitespace_pattern, self.selected_token) is not None
+                and re.fullmatch(self.whitespace_pattern, self.selected_token) is not None
             ):
                 self.same_state_visit_count += 1
             else:
