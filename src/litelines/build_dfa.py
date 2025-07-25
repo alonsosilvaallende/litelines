@@ -145,10 +145,43 @@ def is_json(string):
     except json.JSONDecodeError:
         return False
 
+def add_tool_call_to_index(
+    dfa: dict[int, dict[int, int]],
+    tokenizer: PreTrainedTokenizer,
+    tool_call_start: Optional[str] = "<tool_call>",
+    tool_call_end: Optional[str] = "</tool_call>",
+    k: Optional[int] = 1,
+) -> dict[int, dict[int, int]]:
+    original_states = range(len(dfa) + 1)
+    final_states = {state for state in original_states if state not in list(dfa.keys())}
+    new_dfa = {}
+    for state, transitions in dfa.items():
+        new_transitions = {
+            key: next_state + k for key, next_state in transitions.items()
+        }
+        new_dfa[state + k] = new_transitions
+    if len(tokenizer.encode(tool_call_start, add_special_tokens=False))>1:
+        raise ValueError(
+            f"{tool_call_start} is not a valid token"
+        )
+    elif len(tokenizer.encode(tool_call_end, add_special_tokens=False))>1:
+        raise ValueError(
+            f"{tool_call_end} is not a valid token"
+        )
+    else:
+        new_dfa[0] = {int(tokenizer.encode(tool_call_start, add_special_tokens=False)[0]): 1}
+        for final_state in final_states:
+            new_dfa[final_state + k] = {
+                int(tokenizer.encode(tool_call_end, add_special_tokens=False)[0]): len(dfa) + 2
+            }
+    return new_dfa
+
 def build_dfa(
     regex_str: Union[str, Type[BaseModel]],
     tokenizer: PreTrainedTokenizer,
     include_tool_call: Optional[bool] = False,
+    tool_call_start: Optional[str] = "<tool_call>",
+    tool_call_end: Optional[str] = "</tool_call>",
     whitespace_pattern: Optional[str] = r"[\n\t\r ]*",
 ) -> dict[int, dict[int, int]]:
     if isinstance(regex_str, str) and is_json(regex_str):
@@ -169,4 +202,8 @@ def build_dfa(
     new_fsm, _ = make_deterministic_fsm(list_of_strings_fsm)
     new_tokenizer = TransformerTokenizer(tokenizer)
     index, _ = create_fsm_index_tokenizer(new_fsm, new_tokenizer)
+    if include_tool_call:
+        index = add_tool_call_to_index(
+            index, tokenizer, tool_call_start=tool_call_start, tool_call_end=tool_call_end
+        )
     return index
