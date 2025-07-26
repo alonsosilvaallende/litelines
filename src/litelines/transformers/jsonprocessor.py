@@ -6,7 +6,7 @@ from pydantic import BaseModel
 from transformers import LogitsProcessor, PreTrainedTokenizer
 
 from ..build_dfa import build_dfa
-
+from ..draw_dfa import draw_dfa
 
 class JSONProcessor(LogitsProcessor):
     def __init__(
@@ -43,10 +43,50 @@ class JSONProcessor(LogitsProcessor):
         self.final_states = None
         self.selected_token = None
 
+    def __create_dfa(self):
+        if isinstance(self.response_format, dict) and all(
+            isinstance(k, int)
+            and isinstance(v, dict)
+            and all(isinstance(k2, int) and isinstance(v2, int) for k2, v2 in v.items())
+            for k, v in (self.response_format).items()
+        ):
+            self.dfa = self.response_format
+        elif isinstance(self.response_format, str) or issubclass(
+            self.response_format, BaseModel
+        ):
+            self.dfa = build_dfa(
+                self.response_format,
+                self.tokenizer,
+                include_tool_call=self.include_tool_call,
+                tool_call_start=self.tool_call_start,
+                tool_call_end=self.tool_call_end,
+                whitespace_pattern=self.whitespace_pattern,
+            )
+
+        else:
+            raise ValueError(
+                f"Cannot parse schema {self.response_format}. The schema must be either "
+                + "a Pydantic model, a dict[int, dict[int, int]] or a string that contains the JSON "
+                + "schema specification"
+            )
+
+    def show_graph(self):
+        if self.trajectory == []:  # first time
+            self.__create_dfa()
+        return draw_dfa(
+            self.dfa,
+            self.tokenizer,
+            self.trajectory,
+            self.include_tool_call,
+            self.tool_call_start,
+            self.tool_call_end,
+            self.whitespace_pattern,
+            self.verbose,
+        )
+
     def __call__(
         self, input_ids: torch.LongTensor, scores: torch.FloatTensor
     ) -> torch.FloatTensor:
-
         if self.previous_input_ids is not None:
             # Check if we're continuing from the previous sequence
             if not torch.equal(input_ids[:, :-1], self.previous_input_ids):
@@ -54,36 +94,8 @@ class JSONProcessor(LogitsProcessor):
                 self.reset_state()
 
         if self.final_states is None:  # first time
-            if isinstance(self.response_format, dict) and all(
-                isinstance(k, int)
-                and isinstance(v, dict)
-                and all(
-                    isinstance(k2, int) and isinstance(v2, int) for k2, v2 in v.items()
-                )
-                for k, v in (self.response_format).items()
-            ):
-                self.dfa = self.response_format
-            elif isinstance(self.response_format, str):
-                self.dfa = build_dfa(
-                    self.response_format,
-                    self.tokenizer,
-                    include_tool_call=self.include_tool_call,
-                    whitespace_pattern=self.whitespace_pattern,
-                )
-            elif issubclass(self.response_format, BaseModel):
-                self.dfa = build_dfa(
-                    self.response_format,
-                    self.tokenizer,
-                    include_tool_call=self.include_tool_call,
-                    whitespace_pattern=self.whitespace_pattern,
-                )
-            else:
-                raise ValueError(
-                    f"Cannot parse schema {self.response_format}. The schema must be either "
-                    + "a Pydantic class, a dict[int, dict[int, int]] or a string that contains the JSON "
-                    + "schema specification"
-                )
-
+            if self.dfa is None:
+                self.__create_dfa()
             self.current_state = 0
             self.previous_state = None
             states = range(len(self.dfa) + 1)
@@ -108,7 +120,8 @@ class JSONProcessor(LogitsProcessor):
             self.current_state = self.dfa[self.current_state][self.selected_token]
             if (
                 self.previous_state == self.current_state
-                and re.fullmatch(self.whitespace_pattern, self.selected_token) is not None
+                and re.fullmatch(self.whitespace_pattern, self.selected_token)
+                is not None
             ):
                 self.same_state_visit_count += 1
             else:
