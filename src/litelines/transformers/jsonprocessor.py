@@ -14,6 +14,8 @@ class JSONProcessor(LogitsProcessor):
         response_format=Union[str, dict[int, dict[int, int]], Type[BaseModel]],
         tokenizer=PreTrainedTokenizer,
         include_tool_call: Optional[bool] = False,
+        tool_call_start: Optional[str] = "<tool_call>",
+        tool_call_end: Optional[str] = "</tool_call>",
         whitespace_pattern: Optional[str] = r"[\n\t\r ]*",
         verbose=False,
         max_same_state_visit_count=5,
@@ -21,6 +23,8 @@ class JSONProcessor(LogitsProcessor):
         self.response_format = response_format
         self.tokenizer = tokenizer
         self.include_tool_call = include_tool_call
+        self.tool_call_start = tool_call_start
+        self.tool_call_end = tool_call_end
         self.whitespace_pattern = whitespace_pattern
         self.dfa = None
         self.verbose = verbose
