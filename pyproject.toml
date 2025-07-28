@@ -5,7 +5,7 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
-    "outlines-core==0.1.14",
+    "outlines-core==0.2.11",
     "numpy",
     "graphviz",
     "pydantic",
