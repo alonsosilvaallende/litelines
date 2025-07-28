@@ -120,7 +120,7 @@ class JSONProcessor(LogitsProcessor):
             self.current_state = self.dfa[self.current_state][self.selected_token]
             if (
                 self.previous_state == self.current_state
-                and re.fullmatch(self.whitespace_pattern, self.selected_token)
+                and re.fullmatch(self.whitespace_pattern, self.tokenizer.decode([self.selected_token]))
                 is not None
             ):
                 self.same_state_visit_count += 1
