@@ -1,7 +1,7 @@
 import json
 from typing import Optional, Type, Union
 
-from outlines_core.fsm.json_schema import build_regex_from_schema
+from outlines_core.json_schema import build_regex_from_schema
 from pydantic import BaseModel
 
 
