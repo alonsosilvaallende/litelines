@@ -1,5 +1,5 @@
 # Trick not to use transformers as a dependency
-from typing import Protocol, List, Optional, Union, Tuple
+from typing import Protocol, List, Optional, Union, Tuple, runtime_checkable
 
 class PreTrainedTokenizer(Protocol):
     def __call__(
@@ -28,6 +28,7 @@ class PreTrainedTokenizer(Protocol):
     ) -> str:
         ...
 
+@runtime_checkable
 class PreTrainedTokenizerFast(PreTrainedTokenizer, Protocol):
     def encode_plus(
         self,
