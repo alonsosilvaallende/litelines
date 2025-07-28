@@ -14,7 +14,7 @@ def is_json(string):
     except json.JSONDecodeError:
         return False
 
-def add_tool_call_to_index(
+def add_tool_call_to_dfa(
     dfa: dict[int, dict[int, int]],
     tokenizer: PreTrainedTokenizer,
     tool_call_start: Optional[str] = "<tool_call>",
@@ -119,9 +119,9 @@ def build_dfa(
         )
     vocabulary = Vocabulary.from_pretrained(model_name)
     index = Index(regex_str, vocabulary)
-    if include_tool_call:
-        index = add_tool_call_to_index(
-            index, tokenizer, tool_call_start=tool_call_start, tool_call_end=tool_call_end
-        )
     dfa = get_dfa(index)
+    if include_tool_call:
+        dfa = add_tool_call_to_dfa(
+            dfa, tokenizer, tool_call_start=tool_call_start, tool_call_end=tool_call_end
+        )
     return dfa
