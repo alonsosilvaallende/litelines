@@ -226,7 +226,8 @@ class JSONProcessor(LogitsProcessor):
             forbidden_tokens_mask = ~torch.isin(vocab_tensor, allowed_tokens)
 
         scores_processed = torch.where(forbidden_tokens_mask, -torch.inf, scores)
-        print(f"\x1b[35mwill be chosen: {torch.argmax(scores_processed).item()}\x1b[0m")
+        if self.verbose:
+            print(f"\x1b[35mwill be chosen: {torch.argmax(scores_processed).item()}\x1b[0m")
 
         return scores_processed
 
