@@ -11,16 +11,16 @@ from ..draw_dfa import draw_dfa
 class JSONProcessor(LogitsProcessor):
     def __init__(
         self,
-        response_format=Union[str, dict[int, dict[int, int]], Type[BaseModel]],
-        tokenizer=PreTrainedTokenizer,
-        include_tool_call: Optional[bool] = False,
-        tool_call_start: Optional[str] = "<tool_call>",
-        tool_call_end: Optional[str] = "</tool_call>",
-        allow_preamble: Optional[bool] = False,
-        whitespace_pattern: Optional[str] = r"[\n\t\r ]*",
-        verbose=False,
-        max_same_state_visit_count=5,
-    ):
+        response_format: Union[str, dict[int, dict[int, int]], Type[BaseModel]],
+        tokenizer: PreTrainedTokenizer,
+        include_tool_call: bool = False,
+        tool_call_start: str = "<tool_call>",
+        tool_call_end: str = "</tool_call>",
+        allow_preamble: bool = False,
+        whitespace_pattern: str = r"[\n\t\r ]*",
+        verbose: bool = False,
+        max_same_state_visit_count: int = 5,
+    ) -> None:
         self.response_format = response_format
         self.tokenizer = tokenizer
         self.include_tool_call = include_tool_call
