@@ -125,7 +125,7 @@ class JSONProcessor(LogitsProcessor):
                 if self.include_tool_call:  # it should be a tool call
                     if (
                         len(
-                            tokenizer.encode(
+                            self.tokenizer.encode(
                                 self.tool_call_start, add_special_tokens=False
                             )
                         )
@@ -142,8 +142,8 @@ class JSONProcessor(LogitsProcessor):
                 else:  # it should be json
                     tokens_containing_open_curly_bracket = [
                         token_id
-                        for token_id in range(tokenizer.vocab_size)
-                        if "{" in tokenizer.decode(token_id)
+                        for token_id in range(self.tokenizer.vocab_size)
+                        if "{" in self.tokenizer.decode(token_id)
                     ]
                     self.trigger_token_ids += tokens_containing_open_curly_bracket
 
@@ -162,7 +162,7 @@ class JSONProcessor(LogitsProcessor):
             ):  # if dfa is inactive
                 if self.verbose:
                     print(
-                        f"\x1b[31mtrigger token: {token_chosen_id}: {tokenizer.decode([token_chosen_id])}\x1b[0m"
+                        f"\x1b[31mtrigger token: {token_chosen_id}: {self.tokenizer.decode([token_chosen_id])}\x1b[0m"
                     )
                 self.triggered = True
                 self.current_state = 0
