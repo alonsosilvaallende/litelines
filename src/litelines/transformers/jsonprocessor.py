@@ -149,7 +149,8 @@ class JSONProcessor(LogitsProcessor):
 
         else:  # not the first time
             self.selected_token = input_ids[:, -1].item()
-            self.trajectory.append(self.selected_token)
+            if self.current_state != -1:
+                self.trajectory.append(self.selected_token)
             if self.verbose:
                 print(
                     f"\x1b[32mselected token: {self.selected_token}: {repr(self.tokenizer.decode([self.selected_token]))}\x1b[0m"
