@@ -7,8 +7,10 @@ from pydantic import BaseModel
 
 def build_regex(
     json_schema: Union[dict, str, Type[BaseModel]],
-    include_tool_call: Optional[bool] = False,
-    whitespace_pattern: Optional[str] = r"[\n\t\r ]*",
+    include_tool_call: bool = False,
+    tool_call_start: str = "<tool_call>",
+    tool_call_end: str = "</tool_call>",
+    whitespace_pattern: str = r"[\n\t ]*",
 ) -> str:
     """Convert a JSON schema to a regex.
 
@@ -48,6 +50,8 @@ def build_regex(
     if include_tool_call:
         regex_str = (
             whitespace_pattern
+            + tool_call_start
+            + whitespace_pattern
             + "\\{"
             + whitespace_pattern
             + '"name"'
@@ -67,6 +71,8 @@ def build_regex(
             + _regex_str
             + whitespace_pattern
             + "\\}"
+            + whitespace_pattern
+            + tool_call_end
         )
     else:
         regex_str = whitespace_pattern + _regex_str
