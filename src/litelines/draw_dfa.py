@@ -23,13 +23,13 @@ def build_escaped_label(label: str) -> str:
     """
     Escapes special characters in a string to their corresponding HTML entities
     to ensure proper HTML rendering.
-    
+
     Args:
         label (str): The input string to be escaped.
-        
+
     Returns:
         str: The escaped string with special characters converted to HTML entities.
-        
+
     Special character conversions:
         & -> &amp;
         < -> &lt;
@@ -50,6 +50,30 @@ def build_escaped_label(label: str) -> str:
     }
     escaped = label
     for char, entity in html_entities.items():
+        escaped = escaped.replace(char, entity)
+    return escaped
+
+def build_escaped_title(title: str) -> str:
+    """
+    Escapes special characters in a string title for safe handling.
+
+    This function replaces backslashes, newlines, tabs, and double quotes
+    with their escaped counterparts to prevent formatting issues and ensure
+    proper string handling.
+
+    Args:
+        title (str): The input string to be escaped.
+
+    Returns:
+        str: The escaped string with special characters properly encoded.
+    """
+    escaped = title.replace('\\', '\\\\')
+    escape_chars = {
+        "\n": "\\n",
+        "\t": "\\t",
+        '"': '\\"',
+    }
+    for char, entity in escape_chars.items():
         escaped = escaped.replace(char, entity)
     return escaped
 
@@ -157,15 +181,16 @@ def from_token_trajectory_to_state_trajectory(
 def draw_dfa(
     dfa: Union[dict[int, dict[int, int]], str, Type[BaseModel]],
     tokenizer: PreTrainedTokenizer,
-    trajectory: Optional[list] = [],
-    include_tool_call: Optional[bool] = False,
-    tool_call_start: Optional[str] = "<tool_call>",
-    tool_call_end: Optional[str] = "</tool_call>",
-    whitespace_pattern: Optional[str] = r"[\n\t\r ]*",
-    max_labels_per_edge: Optional[int] = 3,
-    remove_outer_whitespace: Optional[bool] = True,
-    verbose: Optional[bool] = False,
-    render: Optional[bool] = True,
+    trajectory: list = [],
+    include_tool_call: bool = False,
+    tool_call_start: str = "<tool_call>",
+    tool_call_end: str = "</tool_call>",
+    whitespace_pattern: str = r"[\n\t\r ]*",
+    max_labels_per_edge: int = 3,
+    remove_outer_whitespace: bool = True,
+    ratio: Optional[Union[float, str]] = None,
+    size: Optional[Union[Tuple[float, float], str]] = None,
+    render: bool = True,
 ) -> graphviz.sources.Source:
     """
     Creates a graphical representation of a Deterministic Finite Automaton (DFA) using Graphviz DOT language.
@@ -182,7 +207,6 @@ def draw_dfa(
     whitespace_pattern: Optional regex pattern for handling whitespace
     max_labels_per_edge: Maximum number of labels to show per edge (defaults to 3)
     remove_outer_whitespace: Whether to strip whitespace from token labels
-    verbose: Whether to print additional information during generation
     render: Whether to return a rendered Graphviz Source object or raw DOT string
     Returns:
     
@@ -201,26 +225,13 @@ def draw_dfa(
         and all(isinstance(k2, int) and isinstance(v2, int) for k2, v2 in v.items())
         for k, v in dfa.items()
     ):
+        regex = ""
         dfa = dfa
     elif isinstance(dfa, str):
-        if verbose:
-            regex = build_regex(dfa, include_tool_call=include_tool_call, whitespace_pattern=whitespace_pattern)
-            if include_tool_call:
-                print(f"\x1b[34mTool call start:     {tool_call_start} +\x1b[0m")
-                print(f"\x1b[34mRegular expression:  {repr(regex)} +\x1b[0m")
-                print(f"\x1b[34mTool call end:       {tool_call_end}\x1b[0m")
-            else:
-                print(f"\x1b[34mRegular expression:  {repr(regex)}\x1b[0m")
+        regex = build_regex(dfa, include_tool_call=include_tool_call, whitespace_pattern=whitespace_pattern)
         dfa = build_dfa(dfa, tokenizer=tokenizer, include_tool_call=include_tool_call, whitespace_pattern=whitespace_pattern)
     elif issubclass(dfa, BaseModel):
-        if verbose:
-            regex = build_regex(dfa,include_tool_call=include_tool_call, whitespace_pattern=whitespace_pattern)
-            if include_tool_call:
-                print(f"\x1b[34mTool call start:     {tool_call_start} +\x1b[0m")
-                print(f"\x1b[34mRegular expression:  {repr(regex)} +\x1b[0m")
-                print(f"\x1b[34mTool call end:       {tool_call_end}\x1b[0m")
-            else:
-                print(f"\x1b[34mRegular expression:  {repr(regex)}\x1b[0m")
+        regex = build_regex(dfa,include_tool_call=include_tool_call, whitespace_pattern=whitespace_pattern)
         dfa = build_dfa(dfa, tokenizer=tokenizer, include_tool_call=include_tool_call, whitespace_pattern=whitespace_pattern)
     else:
         raise ValueError(
@@ -235,8 +246,11 @@ def draw_dfa(
     states = range(len(dfa) + 1)
     final_states = {state for state in states if state not in list(dfa.keys())}
     graph_str = '// Allowed Transitions Graph\ndigraph {'
-    graph_str += '\n\tgraph [label="Allowed Transition Automaton",labelloc="t",labeljust="l",fontsize=40]'
-    graph_str += '\n\trankdir=LR;ratio=0.1;'
+    if regex != "":
+        graph_str += f'\n\tgraph [label="Allowed Paths\nRegular expression: {build_escaped_title(regex)}",labelloc="t",labeljust="l"]'
+    else:
+        graph_str += f'\n\tgraph [label="Allowed Paths",labelloc="t",labeljust="l"]'
+    graph_str += f'\n\trankdir=LR;size="{size}";ratio={ratio};'
     # Add states to the graph
     for state in states:
         if state in final_states:
