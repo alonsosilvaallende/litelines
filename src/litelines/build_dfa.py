@@ -7,45 +7,6 @@ from pydantic import BaseModel
 from .build_regex import build_regex
 from .utils import PreTrainedTokenizer, PreTrainedTokenizerFast
 
-def is_json(string):
-    try:
-        json.loads(string)
-        return True
-    except json.JSONDecodeError:
-        return False
-
-def add_tool_call_to_dfa(
-    dfa: dict[int, dict[int, int]],
-    tokenizer: PreTrainedTokenizer,
-    tool_call_start: Optional[str] = "<tool_call>",
-    tool_call_end: Optional[str] = "</tool_call>",
-    k: Optional[int] = 1,
-) -> dict[int, dict[int, int]]:
-    original_states = range(len(dfa) + 1)
-    final_states = {state for state in original_states if state not in list(dfa.keys())}
-    new_dfa = {}
-    for state, transitions in dfa.items():
-        new_transitions = {
-            key: next_state + k for key, next_state in transitions.items()
-        }
-        new_dfa[state + k] = new_transitions
-    if len(tokenizer.encode(tool_call_start, add_special_tokens=False))>1:
-        raise ValueError(
-            f"{tool_call_start} is not a valid token"
-        )
-    elif len(tokenizer.encode(tool_call_end, add_special_tokens=False))>1:
-        raise ValueError(
-            f"{tool_call_end} is not a valid token"
-        )
-    else:
-        new_dfa[0] = {int(tokenizer.encode(tool_call_start, add_special_tokens=False)[0]): 1}
-        for final_state in final_states:
-            new_dfa[final_state + k] = {
-                int(tokenizer.encode(tool_call_end, add_special_tokens=False)[0]): len(dfa) + 2
-            }
-    return new_dfa
-
-
 def my_recursive(
     state: int, index: Index, mapping: dict[int, int], visited: set[int], final_states: set[int]
 ) -> None:
@@ -86,42 +47,43 @@ def get_dfa(index: Index) -> dict[int,dict[int,int]]:
     return dfa
 
 def build_dfa(
-    regex_str: Union[str, Type[BaseModel]],
+    response_format: Union[dict, str, Type[BaseModel]],
     tokenizer: Union[str, PreTrainedTokenizer, PreTrainedTokenizerFast],
-    include_tool_call: Optional[bool] = False,
-    tool_call_start: Optional[str] = "<tool_call>",
-    tool_call_end: Optional[str] = "</tool_call>",
-    whitespace_pattern: Optional[str] = r"[\n\t\r ]*",
+    include_tool_call: bool = False,
+    tool_call_start: str = "<tool_call>",
+    tool_call_end: str = "</tool_call>",
+    whitespace_pattern: str = r"[\n\t\r ]*",
 ) -> dict[int, dict[int, int]]:
-    if isinstance(regex_str, str) and is_json(regex_str):
+
+    if isinstance(response_format, str):
+        regex_str = response_format
+    elif isinstance(response_format, dict) or issubclass(response_format, BaseModel):
         regex_str = build_regex(
-            regex_str, include_tool_call=include_tool_call, whitespace_pattern=whitespace_pattern
-        )
-    elif issubclass(regex_str, BaseModel):
-        regex_str = build_regex(
-            regex_str, include_tool_call=include_tool_call, whitespace_pattern=whitespace_pattern
+            response_format,
+            include_tool_call=include_tool_call,
+            tool_call_start=tool_call_start,
+            tool_call_end=tool_call_end,
+            whitespace_pattern=whitespace_pattern,
         )
     else:
         raise ValueError(
-            f"Cannot parse schema {regex_str}. The schema must be either "
-            + "a Pydantic class, a dictionary or a string that contains the JSON "
-            + "schema specification"
+            f"Cannot parse {response_format}. The schema must be either "
+            + "a Pydantic class, a dictionary or a string that corresponds to "
+            + "the regular expression."
         )
+
     if isinstance(tokenizer, str):
         model_name = tokenizer
     elif isinstance(tokenizer, (PreTrainedTokenizer, PreTrainedTokenizerFast)):
         model_name = tokenizer.name_or_path
     else:
         raise ValueError(
-            f"Cannot parse schema {regex_str}. The schema must be either "
-            + "a Pydantic class, a dictionary or a string that contains the JSON "
-            + "schema specification"
+            "The tokenizer must be either "
+            + "a PreTrainedTokenizer, a PreTrainedTokenizerFast "
+            + "or a string that corresponds to the model name."
         )
+
     vocabulary = Vocabulary.from_pretrained(model_name)
     index = Index(regex_str, vocabulary)
     dfa = get_dfa(index)
-    if include_tool_call:
-        dfa = add_tool_call_to_dfa(
-            dfa, tokenizer, tool_call_start=tool_call_start, tool_call_end=tool_call_end
-        )
     return dfa
