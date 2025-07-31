@@ -157,37 +157,38 @@ class JSONProcessor(LogitsProcessor):
                 )
             if self.verbose and self.current_state != -1:
                 print(f"mapping: {self.dfa[self.current_state]}")
-            # activate it if it is triggered
-            if (
-                self.current_state == -1 and token_chosen_id in self.trigger_token_ids
-            ):  # if dfa is inactive
-                if self.verbose:
-                    print(
-                        f"\x1b[31mtrigger token: {token_chosen_id}: {self.tokenizer.decode([token_chosen_id])}\x1b[0m"
-                    )
-                self.triggered = True
-                self.current_state = 0
 
-            if self.current_state != -1:  # if dfa is active
-                if self.triggered:
-                    self.current_state = 0
-                    self.triggered = False
+        # activate it if it is triggered
+        if (
+            self.current_state == -1 and token_chosen_id in self.trigger_token_ids
+        ):  # if dfa is inactive
+            if self.verbose:
+                print(
+                    f"\x1b[31mtrigger token: {token_chosen_id}: {self.tokenizer.decode([token_chosen_id])}\x1b[0m"
+                )
+            self.triggered = True
+            self.current_state = 0
+
+        if self.current_state != -1:  # if dfa is active
+            if self.triggered:
+                self.current_state = 0
+                self.triggered = False
+            else:
+                self.previous_state = self.current_state
+                self.current_state = self.dfa[self.current_state][
+                    self.selected_token
+                ]
+                if (
+                    self.previous_state == self.current_state
+                    and re.fullmatch(
+                        self.whitespace_pattern,
+                        self.tokenizer.decode([self.selected_token]),
+                    )
+                    is not None
+                ):
+                    self.same_state_visit_count += 1
                 else:
-                    self.previous_state = self.current_state
-                    self.current_state = self.dfa[self.current_state][
-                        self.selected_token
-                    ]
-                    if (
-                        self.previous_state == self.current_state
-                        and re.fullmatch(
-                            self.whitespace_pattern,
-                            self.tokenizer.decode([self.selected_token]),
-                        )
-                        is not None
-                    ):
-                        self.same_state_visit_count += 1
-                    else:
-                        self.same_state_visit_count = 0
+                    self.same_state_visit_count = 0
 
         self.previous_input_ids = input_ids.clone()
 
