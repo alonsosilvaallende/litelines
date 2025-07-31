@@ -277,7 +277,7 @@ def draw_dfa(
                     remove_outer_whitespace=True,
                 )
                 if trajectory != [] and state_trajectory != {} and state in state_trajectory.keys() and next_state in state_trajectory[state]:
-                    graph_str += f"\n\t{state} -> {next_state} [label=<{table_str}> color=red]"
+                    graph_str += f"\n\t{state} -> {next_state} [label=<{table_str}> color=red penwidth=3.0]"
                 else:
                     graph_str += f"\n\t{state} -> {next_state} [label=<{table_str}>]"
     graph_str += "\n}\n"
