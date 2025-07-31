@@ -1,6 +1,49 @@
-# Trick not to use transformers as a dependency
 from typing import Protocol, List, Optional, Union, Tuple, runtime_checkable
+import subprocess
 
+def _in_notebook() -> bool:
+    try:
+        from IPython import get_ipython
+
+        if "IPKernelApp" not in get_ipython().config:  # pragma: no cover
+            return False
+    except ImportError:
+        return False
+    except AttributeError:
+        return False
+    return True
+
+def display_dot_graph(
+    dot: str,
+    render: bool = True,
+) -> str | None:
+    if not render:
+        # we do not show a graph, nor save a graph to disk
+        return dot
+    try:
+        graph = subprocess.check_output(
+            ["dot", "-T" + "svg"], input=f"{dot}".encode()
+        )
+    except (ImportError, FileNotFoundError):
+        msg = (
+            "the graphviz `dot` binary should be on your PATH."
+            "(If not installed you can download here: https://graphviz.org/download/)"
+        )
+        raise ImportError(msg) from None
+        
+    if _in_notebook():
+        from IPython.display import SVG, display
+
+        return display(SVG(graph))
+    else:
+        from pathlib import Path
+
+        current_dir = Path(".")
+        file_path = current_dir / "graph.svg"
+        file_path.write_bytes(graph)
+        return None
+
+# Trick not to use transformers as a dependency
 @runtime_checkable
 class PreTrainedTokenizer(Protocol):
     def __call__(

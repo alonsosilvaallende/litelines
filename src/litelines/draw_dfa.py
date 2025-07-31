@@ -2,13 +2,11 @@ import re
 from collections import defaultdict
 from typing import Optional, Tuple, Type, Union
 
-import graphviz
-from graphviz import Source
 from pydantic import BaseModel
 
 from .build_dfa import build_dfa
 from .build_regex import build_regex
-from .utils import PreTrainedTokenizer
+from .utils import PreTrainedTokenizer, PreTrainedTokenizerFast, display_dot_graph
 
 
 def contains_control_chars(s: str) -> bool:
@@ -191,7 +189,7 @@ def draw_dfa(
     ratio: Optional[Union[float, str]] = None,
     size: Optional[Union[Tuple[float, float], str]] = None,
     render: bool = True,
-) -> graphviz.sources.Source:
+) -> str | None:
     """
     Creates a graphical representation of a Deterministic Finite Automaton (DFA) using Graphviz DOT language.
 
@@ -281,4 +279,4 @@ def draw_dfa(
                 else:
                     graph_str += f"\n\t{state} -> {next_state} [label=<{table_str}>]"
     graph_str += "\n}\n"
-    return Source(graph_str) if render else graph_str
+    return display_dot_graph(dot=graph_str, render=render)
