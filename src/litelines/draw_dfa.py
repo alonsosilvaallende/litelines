@@ -1,6 +1,6 @@
 import re
 from collections import defaultdict
-from typing import Optional, Type, Union
+from typing import Optional, Tuple, Type, Union
 
 import graphviz
 from graphviz import Source
