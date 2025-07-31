@@ -141,8 +141,8 @@ class JSONProcessor(LogitsProcessor):
                     # not the best solution since it excludes '<' in the preamble
                     tokens_containing_open_tool_call = [
                         token_id
-                        for token_id in range(tokenizer.vocab_size)
-                        if "<" in tokenizer.decode(token_id)
+                        for token_id in range(self.tokenizer.vocab_size)
+                        if "<" in self.tokenizer.decode(token_id)
                     ]
                     self.trigger_token_ids += tokens_containing_open_tool_call
                 else:  # it should be json
