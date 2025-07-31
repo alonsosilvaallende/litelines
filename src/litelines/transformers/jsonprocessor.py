@@ -81,7 +81,6 @@ class JSONProcessor(LogitsProcessor):
             self.tool_call_start,
             self.tool_call_end,
             self.whitespace_pattern,
-            self.verbose,
         )
 
     def reset_state(self):
@@ -139,6 +138,13 @@ class JSONProcessor(LogitsProcessor):
                             self.tool_call_start, add_special_tokens=False
                         )[0]
                     )
+                    # not the best solution since it excludes '<' in the preamble
+                    tokens_containing_open_tool_call = [
+                        token_id
+                        for token_id in range(tokenizer.vocab_size)
+                        if "<" in tokenizer.decode(token_id)
+                    ]
+                    self.trigger_token_ids += tokens_containing_open_tool_call
                 else:  # it should be json
                     tokens_containing_open_curly_bracket = [
                         token_id
