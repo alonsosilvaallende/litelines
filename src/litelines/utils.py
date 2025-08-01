@@ -1,11 +1,11 @@
-from typing import Protocol, List, Optional, Union, Tuple, runtime_checkable
 import subprocess
+from typing import List, Optional, Protocol, Tuple, Union, runtime_checkable
 
 def _in_notebook() -> bool:
     try:
-        from IPython import get_ipython
+        from IPython import get_ipython  # type: ignore
 
-        if "IPKernelApp" not in get_ipython().config:  # pragma: no cover
+        if "IPKernelApp" not in get_ipython().config:
             return False
     except ImportError:
         return False
@@ -32,7 +32,7 @@ def display_dot_graph(
         raise ImportError(msg) from None
         
     if _in_notebook():
-        from IPython.display import SVG, display
+        from IPython.display import SVG, display  # type: ignore
 
         return display(SVG(graph))
     else:
