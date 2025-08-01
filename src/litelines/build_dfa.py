@@ -57,7 +57,7 @@ def build_dfa(
 
     if isinstance(response_format, str):
         regex_str = response_format
-    elif isinstance(response_format, dict) or issubclass(response_format, BaseModel):
+    elif isinstance(response_format, dict) or isinstance(response_format, type) and issubclass(response_format, BaseModel):
         regex_str = build_regex(
             response_format,
             include_tool_call=include_tool_call,
@@ -75,7 +75,12 @@ def build_dfa(
     if isinstance(tokenizer, str):
         model_name = tokenizer
     elif isinstance(tokenizer, (PreTrainedTokenizer, PreTrainedTokenizerFast)):
-        model_name = tokenizer.name_or_path
+        model_name = getattr(tokenizer, "name_or_path", None)
+        if model_name is None:
+            raise ValueError(
+                    "Could not determine model name from tokenizer. "
+                    + "You can pass it directly to the build_dfa function."
+            )
     else:
         raise ValueError(
             "The tokenizer must be either "
