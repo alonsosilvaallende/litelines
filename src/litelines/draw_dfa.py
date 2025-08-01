@@ -130,7 +130,11 @@ def create_table(
     table_str += (
         '<tr><td bgcolor="#ffebcd">id</td><td bgcolor="#ffebcd">token</td></tr>'
     )
-    if len(edges_between_state_and_next_state) > max_labels_per_edge:
+    if max_labels_per_edge is None:
+        for token_id in edges_between_state_and_next_state:
+            table_str += create_row(token_id, tokenizer, remove_outer_whitespace)
+        table_str += """<tr><td align="right"><font color="#00b4d8">...</font></td><td>...</td></tr>"""
+    elif len(edges_between_state_and_next_state) > max_labels_per_edge:
         for token_id in edges_between_state_and_next_state[:max_labels_per_edge]:
             table_str += create_row(token_id, tokenizer, remove_outer_whitespace)
         table_str += """<tr><td align="right"><font color="#00b4d8">...</font></td><td>...</td></tr>"""
@@ -142,7 +146,7 @@ def create_table(
 
 def from_token_trajectory_to_state_trajectory(
     token_trajectory: list, dfa: dict[int, dict[int, int]]
-) -> list:
+) -> dict[int, list[int]]:
     """
     Converts a sequence of token IDs into a mapping of state transitions in a DFA.
 
@@ -228,7 +232,7 @@ def draw_dfa(
     elif isinstance(dfa, str):
         regex = build_regex(dfa, include_tool_call=include_tool_call, whitespace_pattern=whitespace_pattern)
         dfa = build_dfa(dfa, tokenizer=tokenizer, include_tool_call=include_tool_call, whitespace_pattern=whitespace_pattern)
-    elif issubclass(dfa, BaseModel):
+    elif isinstance(dfa, type) and issubclass(dfa, BaseModel):
         regex = build_regex(dfa,include_tool_call=include_tool_call, whitespace_pattern=whitespace_pattern)
         dfa = build_dfa(dfa, tokenizer=tokenizer, include_tool_call=include_tool_call, whitespace_pattern=whitespace_pattern)
     else:
