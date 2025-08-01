@@ -1,9 +1,17 @@
 import re
 from typing import Optional, Type, Union
 
-import torch
 from pydantic import BaseModel
-from transformers import LogitsProcessor, PreTrainedTokenizer
+
+try:
+    import torch
+    from transformers import LogitsProcessor, PreTrainedTokenizer
+except ImportError:
+    msg = (
+        "For this processor, transformers and pytorch should be installed. "
+        "You can install them with pip install transformers[torch]"
+    )
+    raise ImportError(msg) from None
 
 from ..build_dfa import build_dfa
 from ..draw_dfa import draw_dfa
