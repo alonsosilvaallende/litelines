@@ -35,7 +35,7 @@ def build_regex(
     elif isinstance(json_schema, str):
         schema_str = json_schema
         name_str = json.loads(json_schema)["title"]
-    elif issubclass(json_schema, BaseModel):
+    elif isinstance(json_schema, type) and issubclass(json_schema, BaseModel):
         schema_str = json.dumps(json_schema.model_json_schema())
         name_str = json_schema.__name__
     else:
