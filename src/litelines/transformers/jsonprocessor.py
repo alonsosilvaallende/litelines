@@ -4,8 +4,8 @@ from typing import Optional, Type, Union
 from pydantic import BaseModel
 
 try:
-    import torch
-    from transformers import LogitsProcessor, PreTrainedTokenizer
+    import torch  # type: ignore
+    from transformers import LogitsProcessor, PreTrainedTokenizer  # type: ignore
 except ImportError:
     msg = (
         "For this processor, transformers and pytorch should be installed. "
@@ -69,7 +69,7 @@ class JSONProcessor(LogitsProcessor):
             self.dfa = self.response_format
         elif isinstance(self.response_format, str):
             self.__build_dfa()
-        elif issubclass(self.response_format, BaseModel):
+        elif isinstance(self.response_format, type) and issubclass(self.response_format, BaseModel):
             self.__build_dfa()
         else:
             raise ValueError(
