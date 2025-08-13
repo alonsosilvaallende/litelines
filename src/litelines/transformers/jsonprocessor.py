@@ -122,8 +122,10 @@ class JSONProcessor(LogitsProcessor):
             self.previous_input_ids = input_ids.clone()
             if not self.allow_preamble:
                 self.current_state = 0  # dfa active
+                self.triggered = True
             else:
                 self.current_state = -1  # inactive
+                self.triggered = False
                 # add eos to triggers
                 self.trigger_token_ids = [
                     self.tokenizer.eos_token_id,
