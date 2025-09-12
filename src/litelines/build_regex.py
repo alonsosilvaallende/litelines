@@ -1,7 +1,8 @@
 import json
-from typing import Any, Optional, Type, Union
+from typing import Any, Type, Union
 
 from outlines_core.json_schema import build_regex_from_schema
+
 
 def build_regex(
     schema: Union[dict, str, Type[Any]],
@@ -51,7 +52,7 @@ def build_regex(
     elif isinstance(schema, str):
         schema_str = schema
         name_str = json.loads(schema)["title"]
-    elif hasattr(schema, 'model_json_schema'):
+    elif hasattr(schema, "model_json_schema"):
         schema_str = json.dumps(schema.model_json_schema())
         name_str = schema.__name__
     else:

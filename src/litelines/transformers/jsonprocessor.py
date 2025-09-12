@@ -1,5 +1,5 @@
 import re
-from typing import Any, Optional, Type, Union
+from typing import Any, Type, Union
 
 try:
     import torch  # type: ignore
@@ -14,6 +14,7 @@ except ImportError:
 from ..build_dfa import build_dfa
 from ..draw_dfa import draw_dfa
 
+
 class JSONProcessor(LogitsProcessor):
     """Build the Logits Processor that enforces the response format
 
@@ -24,6 +25,7 @@ class JSONProcessor(LogitsProcessor):
     Returns:
         The logits processor that enforces the response format
     """
+
     def __init__(
         self,
         response_format: Union[str, dict[int, dict[int, int]], Type[Any]],
@@ -76,7 +78,7 @@ class JSONProcessor(LogitsProcessor):
             self.dfa = self.response_format
         elif isinstance(self.response_format, str):
             self.__build_dfa()
-        elif hasattr(self.response_format, 'model_json_schema'):
+        elif hasattr(self.response_format, "model_json_schema"):
             self.__build_dfa()
         else:
             raise ValueError(
@@ -198,9 +200,7 @@ class JSONProcessor(LogitsProcessor):
                 self.triggered = False
             else:
                 self.previous_state = self.current_state
-                self.current_state = self.dfa[self.current_state][
-                    self.selected_token
-                ]
+                self.current_state = self.dfa[self.current_state][self.selected_token]
                 if (
                     self.previous_state == self.current_state
                     and re.fullmatch(
@@ -252,7 +252,8 @@ class JSONProcessor(LogitsProcessor):
 
         scores_processed = torch.where(forbidden_tokens_mask, -torch.inf, scores)
         if self.verbose:
-            print(f"\x1b[35mwill be chosen: {torch.argmax(scores_processed).item()}\x1b[0m")
+            print(
+                f"\x1b[35mwill be chosen: {torch.argmax(scores_processed).item()}\x1b[0m"
+            )
 
         return scores_processed
-

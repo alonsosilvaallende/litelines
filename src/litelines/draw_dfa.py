@@ -1,11 +1,17 @@
 import re
-import json
 from collections import defaultdict
 from typing import Any, Optional, Tuple, Type, Union
 
 from .build_dfa import build_dfa
 from .build_regex import build_regex
-from .utils import PreTrainedTokenizer, PreTrainedTokenizerFast, display_dot_graph
+from .utils import (
+    PreTrainedTokenizer,
+    PreTrainedTokenizerFast,
+    display_dot_graph,
+    invalid_schema_error,
+    is_valid_json,
+    is_valid_regex,
+)
 
 
 def contains_control_chars(s: str) -> bool:
@@ -15,6 +21,7 @@ def contains_control_chars(s: str) -> bool:
     # Compile a regex pattern to detect any character in the range \x00-\x1F or \x7F-\x9F.
     pattern = re.compile(r"[\x00-\x1F\x7F-\x9F]")
     return pattern.search(s) is not None
+
 
 def build_escaped_label(label: str) -> str:
     """
@@ -37,18 +44,19 @@ def build_escaped_label(label: str) -> str:
         \\ -> &#92;
     """
     html_entities = {
-        '&': '&amp;',
-        '<': '&lt;',
-        '>': '&gt;',
-        "'": '&apos;',
-        '[': '&#91;',
-        ']': '&#93;',
-        '\\': '&#92;',
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        "'": "&apos;",
+        "[": "&#91;",
+        "]": "&#93;",
+        "\\": "&#92;",
     }
     escaped = label
     for char, entity in html_entities.items():
         escaped = escaped.replace(char, entity)
     return escaped
+
 
 def build_escaped_title(title: str) -> str:
     """
@@ -64,7 +72,7 @@ def build_escaped_title(title: str) -> str:
     Returns:
         str: The escaped string with special characters properly encoded.
     """
-    escaped = title.replace('\\', '\\\\')
+    escaped = title.replace("\\", "\\\\")
     escape_chars = {
         "\n": "\\n",
         "\t": "\\t",
@@ -74,10 +82,11 @@ def build_escaped_title(title: str) -> str:
         escaped = escaped.replace(char, entity)
     return escaped
 
+
 def create_row(
     token_id: int,
-    tokenizer: PreTrainedTokenizer,
-    remove_outer_whitespace: Optional[bool] = True,
+    tokenizer: Union[PreTrainedTokenizer, PreTrainedTokenizerFast],
+    remove_outer_whitespace: bool = True,
 ) -> str:
     """
     Creates an HTML table row for a Graphviz DOT diagram containing token ID and its decoded value.
@@ -85,7 +94,7 @@ def create_row(
     Args:
         token_id (int): The ID of the token to be decoded
         tokenizer (PreTrainedTokenizer): The tokenizer used to decode the token ID
-        remove_outer_whitespace (Optional[bool]): Whether to strip whitespace from the decoded token. 
+        remove_outer_whitespace (Optional[bool]): Whether to strip whitespace from the decoded token.
             Defaults to True.
 
     Returns:
@@ -103,15 +112,16 @@ def create_row(
         row = f"""<tr><td align="right"><font color="#00b4d8">{token_id}</font></td><td>{escaped_token}</td></tr>"""
     return row
 
+
 def create_table(
     edges_between_state_and_next_state: list[int],
-    tokenizer: PreTrainedTokenizer,
-    max_labels_per_edge: Optional[int] = 3,
-    remove_outer_whitespace: Optional[bool] = True,
+    tokenizer: Union[PreTrainedTokenizer, PreTrainedTokenizerFast],
+    max_labels_per_edge: int = 3,
+    remove_outer_whitespace: bool = True,
 ) -> str:
     """
     Creates an HTML-formatted table string for use in a Graphviz DOT graph.
-    
+
     The table displays token IDs and their corresponding decoded tokens, with a limit
     on the number of rows shown. If the number of edges exceeds max_labels_per_edge,
     only the first few entries are shown followed by an ellipsis.
@@ -142,6 +152,7 @@ def create_table(
             table_str += create_row(token_id, tokenizer, remove_outer_whitespace)
     table_str += "</table>"
     return table_str
+
 
 def from_token_trajectory_to_state_trajectory(
     token_trajectory: list, dfa: dict[int, dict[int, int]]
@@ -179,30 +190,10 @@ def from_token_trajectory_to_state_trajectory(
         current_state = dfa[current_state][token_id]
     return state_trajectory
 
-def is_valid_json(s: str) -> bool:
-    try:
-        json.loads(s)
-        return True
-    except json.JSONDecodeError:
-        return False
-
-def is_valid_regex(pattern: str) -> bool:
-    try:
-        re.compile(pattern)
-        return True
-    except re.error:
-        return False
-
-def invalid_schema_error(dfa: object) -> None:
-    raise ValueError(
-            f"Cannot parse schema of type {type(dfa).__name__}: {dfa}. The schema must be either "
-            + "a Pydantic class, a dict[int, dict[int, int]], a string that contains the JSON "
-            + "schema specification or a string that contains the regular expression specification."
-        )
 
 def draw_dfa(
     dfa: Union[dict[int, dict[int, int]], str, Type[Any]],
-    tokenizer: PreTrainedTokenizer,
+    tokenizer: Union[PreTrainedTokenizer, PreTrainedTokenizerFast],
     trajectory: list = [],
     include_tool_call: bool = False,
     tool_call_start: str = "<tool_call>",
@@ -217,11 +208,11 @@ def draw_dfa(
     """Create a graphical representation of a Deterministic Finite Automaton (DFA) using Graphviz DOT language.
 
     The function visualizes the DFA with:
-    
+
     - states as circles (double circles for final states)
     - directed edges showing transitions between states
     - edge labels containing tables of token IDs and their corresponding text
-    - optional red highlighting for edges in the provided trajectory 
+    - optional red highlighting for edges in the provided trajectory
 
     Examples:
         >>> from typing import Literal
@@ -274,29 +265,52 @@ def draw_dfa(
         dfa = dfa
     elif isinstance(dfa, str):
         if is_valid_json(dfa):
-            regex = build_regex(dfa, include_tool_call=include_tool_call, whitespace_pattern=whitespace_pattern)
-            dfa = build_dfa(dfa, tokenizer=tokenizer, include_tool_call=include_tool_call, whitespace_pattern=whitespace_pattern)
+            regex = build_regex(
+                dfa,
+                include_tool_call=include_tool_call,
+                whitespace_pattern=whitespace_pattern,
+            )
+            dfa = build_dfa(
+                dfa,
+                tokenizer=tokenizer,
+                include_tool_call=include_tool_call,
+                whitespace_pattern=whitespace_pattern,
+            )
         elif is_valid_regex(dfa):
             regex = dfa
-            dfa = build_dfa(dfa, tokenizer=tokenizer, include_tool_call=include_tool_call, whitespace_pattern=whitespace_pattern)
+            dfa = build_dfa(
+                dfa,
+                tokenizer=tokenizer,
+                include_tool_call=include_tool_call,
+                whitespace_pattern=whitespace_pattern,
+            )
         else:
             invalid_schema_error(dfa)
-    elif hasattr(dfa, 'model_json_schema'):
-        regex = build_regex(dfa,include_tool_call=include_tool_call, whitespace_pattern=whitespace_pattern)
-        dfa = build_dfa(dfa, tokenizer=tokenizer, include_tool_call=include_tool_call, whitespace_pattern=whitespace_pattern)
+    elif hasattr(dfa, "model_json_schema"):
+        regex = build_regex(
+            dfa,
+            include_tool_call=include_tool_call,
+            whitespace_pattern=whitespace_pattern,
+        )
+        dfa = build_dfa(
+            dfa,
+            tokenizer=tokenizer,
+            include_tool_call=include_tool_call,
+            whitespace_pattern=whitespace_pattern,
+        )
     else:
         invalid_schema_error(dfa)
 
     if trajectory != []:
-        state_trajectory = from_token_trajectory_to_state_trajectory(trajectory,dfa)
+        state_trajectory = from_token_trajectory_to_state_trajectory(trajectory, dfa)
 
     states = range(len(dfa) + 1)
     final_states = {state for state in states if state not in list(dfa.keys())}
-    graph_str = '// Allowed Transitions Graph\ndigraph {'
+    graph_str = "// Allowed Transitions Graph\ndigraph {"
     if regex != "":
         graph_str += f'\n\tgraph [label="Allowed Paths\nRegular expression: {build_escaped_title(regex)}",labelloc="t",labeljust="l"]'
     else:
-        graph_str += f'\n\tgraph [label="Allowed Paths",labelloc="t",labeljust="l"]'
+        graph_str += '\n\tgraph [label="Allowed Paths",labelloc="t",labeljust="l"]'
     graph_str += f'\n\trankdir=LR;size="{size}";ratio={ratio};'
     # Add states to the graph
     for state in states:
@@ -323,7 +337,12 @@ def draw_dfa(
                     max_labels_per_edge=3,
                     remove_outer_whitespace=True,
                 )
-                if trajectory != [] and state_trajectory != {} and state in state_trajectory.keys() and next_state in state_trajectory[state]:
+                if (
+                    trajectory != []
+                    and state_trajectory != {}
+                    and state in state_trajectory.keys()
+                    and next_state in state_trajectory[state]
+                ):
                     graph_str += f"\n\t{state} -> {next_state} [label=<{table_str}> color=red penwidth=3.0]"
                 else:
                     graph_str += f"\n\t{state} -> {next_state} [label=<{table_str}>]"

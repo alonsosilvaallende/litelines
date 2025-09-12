@@ -1,5 +1,28 @@
+import re
+import json
 import subprocess
 from typing import List, Optional, Protocol, Tuple, Union, runtime_checkable
+
+def is_valid_json(s: str) -> bool:
+    try:
+        json.loads(s)
+        return True
+    except json.JSONDecodeError:
+        return False
+
+def is_valid_regex(pattern: str) -> bool:
+    try:
+        re.compile(pattern)
+        return True
+    except re.error:
+        return False
+
+def invalid_schema_error(dfa: object) -> None:
+    raise ValueError(
+        f"Cannot parse schema of type {type(dfa).__name__}: {dfa}. The schema must be either "
+        + "a Pydantic schema, a dict[int, dict[int, int]], a string that contains the JSON "
+        + "schema specification or a string that contains the regular expression specification."
+    )
 
 def _in_notebook() -> bool:
     try:

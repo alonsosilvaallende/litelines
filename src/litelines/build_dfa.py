@@ -1,13 +1,23 @@
-import json
-from typing import Any, Optional, Type, Union
+from typing import Any, Type, Union
 
 from outlines_core import Index, Vocabulary
 
 from litelines import build_regex
-from litelines.utils import PreTrainedTokenizer, PreTrainedTokenizerFast
+from litelines.utils import (
+    PreTrainedTokenizer,
+    PreTrainedTokenizerFast,
+    invalid_schema_error,
+    is_valid_json,
+    is_valid_regex,
+)
+
 
 def my_recursive(
-    state: int, index: Index, mapping: dict[int, int], visited: set[int], final_states: set[int]
+    state: int,
+    index: Index,
+    mapping: dict[int, int],
+    visited: set[int],
+    final_states: set[int],
 ) -> None:
     if state in final_states:
         return
@@ -19,6 +29,7 @@ def my_recursive(
             mapping[new_state] = len(mapping)
         if new_state not in visited:
             my_recursive(new_state, index, mapping, visited, final_states)
+
 
 def get_state_mapping(index: Index) -> dict[int, int]:
     initial_state = index.get_initial_state()
@@ -34,7 +45,8 @@ def get_state_mapping(index: Index) -> dict[int, int]:
         mapping[final_state] = num_states - (i + 1)
     return mapping
 
-def get_dfa(index: Index) -> dict[int,dict[int,int]]:
+
+def get_dfa(index: Index) -> dict[int, dict[int, int]]:
     mapping = get_state_mapping(index)
     dfa = {}
     for state, transitions in index.get_transitions().items():
@@ -44,6 +56,7 @@ def get_dfa(index: Index) -> dict[int,dict[int,int]]:
         if state not in index.get_final_states():
             dfa[mapping[state]] = new_transitions
     return dfa
+
 
 def build_dfa(
     response_format: Union[dict, str, Type[Any]],
@@ -60,7 +73,7 @@ def build_dfa(
         >>> from pydantic import BaseModel, Field
         >>> from transformers import AutoTokenizer
         >>> from litelines import build_dfa
-        >>> 
+        >>>
         >>> model_id = "Qwen/Qwen3-0.6B"
         >>> tokenizer = AutoTokenizer.from_pretrained(model_id)
         >>> build_dfa("A|B", tokenizer)
@@ -92,8 +105,19 @@ def build_dfa(
         ValueError: An error occurs if the response format is not a Pydantic model, a dictionary, or a string that corresponds to the regular expression.
     """
     if isinstance(response_format, str):
-        regex_str = response_format
-    elif isinstance(response_format, dict) or hasattr(response_format, 'model_json_schema'):
+        if is_valid_json(response_format):
+            regex_str = build_regex(
+                response_format,
+                include_tool_call=include_tool_call,
+                whitespace_pattern=whitespace_pattern,
+            )
+        elif is_valid_regex(response_format):
+            regex_str = response_format
+        else:
+            invalid_schema_error(response_format)
+    elif isinstance(response_format, dict) or hasattr(
+        response_format, "model_json_schema"
+    ):
         regex_str = build_regex(
             response_format,
             include_tool_call=include_tool_call,
@@ -102,11 +126,7 @@ def build_dfa(
             whitespace_pattern=whitespace_pattern,
         )
     else:
-        raise ValueError(
-            f"Cannot parse {response_format}. The schema must be either "
-            + "a Pydantic model, a dictionary or a string that corresponds to "
-            + "the regular expression."
-        )
+        invalid_schema_error(response_format)
 
     if isinstance(tokenizer, str):
         model_name = tokenizer
@@ -114,8 +134,8 @@ def build_dfa(
         model_name = getattr(tokenizer, "name_or_path", None)
         if model_name is None:
             raise ValueError(
-                    "Could not determine model name from tokenizer. "
-                    + "You can pass it directly to the build_dfa function."
+                "Could not determine model name from tokenizer. "
+                + "You can pass it directly to the build_dfa function."
             )
     else:
         raise ValueError(
