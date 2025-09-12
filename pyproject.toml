@@ -3,7 +3,7 @@ name = "litelines"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
-requires-python = ">=3.10"
+requires-python = ">=3.8"
 dependencies = [
-    "outlines-core==0.2.11",
+    "outlines-core>=0.2.9",
 ]
