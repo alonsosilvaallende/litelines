@@ -3,11 +3,17 @@
 
 # litelines
 
+Customize, control, and enhance LLM generation with logits processors, featuring visualization capabilities to inspect and understand state transitions.
+
 ## Installation
 
 ```bash
 pip install litelines
 ```
+
+## Dependencies
+
+The only dependency is `outlines-core`.
 
 ## Supported Frameworks
 * transformers
@@ -197,3 +203,4 @@ print(tokenizer.decode(generated[0][inputs['input_ids'].shape[-1]:]))
 processor.show_graph()
 ```
 <img src="index_figures/Guaranteed_JSON_selected_path.jpg" />
+
