@@ -1,9 +1,7 @@
 import re
 import json
 from collections import defaultdict
-from typing import Optional, Tuple, Type, Union
-
-from pydantic import BaseModel
+from typing import Any, Optional, Tuple, Type, Union
 
 from .build_dfa import build_dfa
 from .build_regex import build_regex
@@ -203,7 +201,7 @@ def invalid_schema_error(dfa: object) -> None:
         )
 
 def draw_dfa(
-    dfa: Union[dict[int, dict[int, int]], str, Type[BaseModel]],
+    dfa: Union[dict[int, dict[int, int]], str, Type[Any]],
     tokenizer: PreTrainedTokenizer,
     trajectory: list = [],
     include_tool_call: bool = False,
@@ -251,7 +249,7 @@ def draw_dfa(
         dfa: The DFA representation, which can be either:
             A dictionary mapping states to their transitions
             A JSON schema string
-            A Pydantic BaseModel class
+            A Pydantic schema
         tokenizer: The tokenizer used to decode token IDs into readable text
         trajectory: Optional list of tokens representing a path through the DFA
         include_tool_call (optional): Is the Pydantic model expecting a tool call or not.
@@ -283,7 +281,7 @@ def draw_dfa(
             dfa = build_dfa(dfa, tokenizer=tokenizer, include_tool_call=include_tool_call, whitespace_pattern=whitespace_pattern)
         else:
             invalid_schema_error(dfa)
-    elif isinstance(dfa, type) and issubclass(dfa, BaseModel):
+    elif hasattr(dfa, 'model_json_schema'):
         regex = build_regex(dfa,include_tool_call=include_tool_call, whitespace_pattern=whitespace_pattern)
         dfa = build_dfa(dfa, tokenizer=tokenizer, include_tool_call=include_tool_call, whitespace_pattern=whitespace_pattern)
     else:

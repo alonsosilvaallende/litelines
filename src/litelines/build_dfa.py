@@ -1,8 +1,7 @@
 import json
-from typing import Optional, Type, Union
+from typing import Any, Optional, Type, Union
 
 from outlines_core import Index, Vocabulary
-from pydantic import BaseModel
 
 from litelines import build_regex
 from litelines.utils import PreTrainedTokenizer, PreTrainedTokenizerFast
@@ -47,7 +46,7 @@ def get_dfa(index: Index) -> dict[int,dict[int,int]]:
     return dfa
 
 def build_dfa(
-    response_format: Union[dict, str, Type[BaseModel]],
+    response_format: Union[dict, str, Type[Any]],
     tokenizer: Union[str, PreTrainedTokenizer, PreTrainedTokenizerFast],
     include_tool_call: bool = False,
     tool_call_start: str = "<tool_call>",
@@ -94,7 +93,7 @@ def build_dfa(
     """
     if isinstance(response_format, str):
         regex_str = response_format
-    elif isinstance(response_format, dict) or isinstance(response_format, type) and issubclass(response_format, BaseModel):
+    elif isinstance(response_format, dict) or hasattr(response_format, 'model_json_schema'):
         regex_str = build_regex(
             response_format,
             include_tool_call=include_tool_call,

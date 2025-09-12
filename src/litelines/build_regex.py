@@ -1,12 +1,10 @@
 import json
-from typing import Optional, Type, Union
+from typing import Any, Optional, Type, Union
 
 from outlines_core.json_schema import build_regex_from_schema
-from pydantic import BaseModel
-
 
 def build_regex(
-    schema: Union[dict, str, Type[BaseModel]],
+    schema: Union[dict, str, Type[Any]],
     include_tool_call: bool = False,
     tool_call_start: str = "<tool_call>",
     tool_call_end: str = "</tool_call>",
@@ -53,7 +51,7 @@ def build_regex(
     elif isinstance(schema, str):
         schema_str = schema
         name_str = json.loads(schema)["title"]
-    elif isinstance(schema, type) and issubclass(schema, BaseModel):
+    elif hasattr(schema, 'model_json_schema'):
         schema_str = json.dumps(schema.model_json_schema())
         name_str = schema.__name__
     else:

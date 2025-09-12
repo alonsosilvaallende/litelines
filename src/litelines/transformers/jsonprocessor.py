@@ -1,7 +1,5 @@
 import re
-from typing import Optional, Type, Union
-
-from pydantic import BaseModel
+from typing import Any, Optional, Type, Union
 
 try:
     import torch  # type: ignore
@@ -28,7 +26,7 @@ class JSONProcessor(LogitsProcessor):
     """
     def __init__(
         self,
-        response_format: Union[str, dict[int, dict[int, int]], Type[BaseModel]],
+        response_format: Union[str, dict[int, dict[int, int]], Type[Any]],
         tokenizer: PreTrainedTokenizer,
         include_tool_call: bool = False,
         tool_call_start: str = "<tool_call>",
@@ -78,7 +76,7 @@ class JSONProcessor(LogitsProcessor):
             self.dfa = self.response_format
         elif isinstance(self.response_format, str):
             self.__build_dfa()
-        elif isinstance(self.response_format, type) and issubclass(self.response_format, BaseModel):
+        elif hasattr(self.response_format, 'model_json_schema'):
             self.__build_dfa()
         else:
             raise ValueError(
