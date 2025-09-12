@@ -1,4 +1,5 @@
 import re
+import json
 from collections import defaultdict
 from typing import Optional, Tuple, Type, Union
 
@@ -180,6 +181,27 @@ def from_token_trajectory_to_state_trajectory(
         current_state = dfa[current_state][token_id]
     return state_trajectory
 
+def is_valid_json(s: str) -> bool:
+    try:
+        json.loads(s)
+        return True
+    except json.JSONDecodeError:
+        return False
+
+def is_valid_regex(pattern: str) -> bool:
+    try:
+        re.compile(pattern)
+        return True
+    except re.error:
+        return False
+
+def invalid_schema_error(dfa: object) -> None:
+    raise ValueError(
+            f"Cannot parse schema of type {type(dfa).__name__}: {dfa}. The schema must be either "
+            + "a Pydantic class, a dict[int, dict[int, int]], a string that contains the JSON "
+            + "schema specification or a string that contains the regular expression specification."
+        )
+
 def draw_dfa(
     dfa: Union[dict[int, dict[int, int]], str, Type[BaseModel]],
     tokenizer: PreTrainedTokenizer,
@@ -187,38 +209,61 @@ def draw_dfa(
     include_tool_call: bool = False,
     tool_call_start: str = "<tool_call>",
     tool_call_end: str = "</tool_call>",
-    whitespace_pattern: str = r"[\n\t\r ]*",
+    whitespace_pattern: str = r"[\n\t ]*",
     max_labels_per_edge: int = 3,
     remove_outer_whitespace: bool = True,
     ratio: Optional[Union[float, str]] = None,
     size: Optional[Union[Tuple[float, float], str]] = None,
     render: bool = True,
 ) -> str | None:
-    """
-    Creates a graphical representation of a Deterministic Finite Automaton (DFA) using Graphviz DOT language.
+    """Create a graphical representation of a Deterministic Finite Automaton (DFA) using Graphviz DOT language.
 
-    Parameters:
-    
-    dfa: The DFA representation, which can be either:
-    A dictionary mapping states to their transitions
-    A JSON schema string
-    A Pydantic BaseModel class
-    tokenizer: The tokenizer used to decode token IDs into readable text
-    trajectory: Optional list of tokens representing a path through the DFA
-    include_tool_call: Optional flag to include tool calls in the DFA
-    whitespace_pattern: Optional regex pattern for handling whitespace
-    max_labels_per_edge: Maximum number of labels to show per edge (defaults to 3)
-    remove_outer_whitespace: Whether to strip whitespace from token labels
-    render: Whether to return a rendered Graphviz Source object or raw DOT string
-    Returns:
-    
-    A Graphviz Source object if render=True, otherwise the DOT language string
     The function visualizes the DFA with:
     
-    States as circles (double circles for final states)
-    Directed edges showing transitions between states
-    Edge labels containing tables of token IDs and their corresponding text
-    Optional red highlighting for edges in the provided trajectory 
+    - states as circles (double circles for final states)
+    - directed edges showing transitions between states
+    - edge labels containing tables of token IDs and their corresponding text
+    - optional red highlighting for edges in the provided trajectory 
+
+    Examples:
+        >>> from typing import Literal
+        >>> from pydantic import BaseModel, Field
+        >>> from transformers import AutoTokenizer
+        >>> from litelines import build_dfa
+        >>>
+        >>> model_id = "Qwen/Qwen3-0.6B"
+        >>> tokenizer = AutoTokenizer.from_pretrained(model_id)
+        >>> draw_dfa("A|B", tokenizer, render=False)
+        #
+        >>> draw_dfa("A0|B0", tokenizer, render=False)
+        #
+        >>>
+        >>> class Sentiment(BaseModel):
+        ...     "Correctly inferred `Sentiment` with all the required parameters with correct types."
+        ...
+        ...     label: Literal["positive", "negative"] = Field(
+        ...         ..., description="Sentiment of the text"
+        ...     )
+        >>> draw_dfa(Sentiment, tokenizer, whitespace_pattern="")
+        #
+
+    Args:
+        dfa: The DFA representation, which can be either:
+            A dictionary mapping states to their transitions
+            A JSON schema string
+            A Pydantic BaseModel class
+        tokenizer: The tokenizer used to decode token IDs into readable text
+        trajectory: Optional list of tokens representing a path through the DFA
+        include_tool_call (optional): Is the Pydantic model expecting a tool call or not.
+        tool_call_start (optional): The expected tool call start.
+        tool_call_end (optional): The expected tool call end.
+        whitespace_pattern (optional): Pattern to use for JSON syntactic whitespace.
+        max_labels_per_edge (optional): Maximum number of labels to show per edge
+        remove_outer_whitespace (optional): Whether to strip whitespace from token labels in the table.
+        render (optional): Whether to return a rendered Graphviz Source object or raw DOT string
+
+    Returns:
+        A Graphviz Source object if render=True, otherwise the DOT language string
     """
 
     if isinstance(dfa, dict) and all(
@@ -230,17 +275,19 @@ def draw_dfa(
         regex = ""
         dfa = dfa
     elif isinstance(dfa, str):
-        regex = build_regex(dfa, include_tool_call=include_tool_call, whitespace_pattern=whitespace_pattern)
-        dfa = build_dfa(dfa, tokenizer=tokenizer, include_tool_call=include_tool_call, whitespace_pattern=whitespace_pattern)
+        if is_valid_json(dfa):
+            regex = build_regex(dfa, include_tool_call=include_tool_call, whitespace_pattern=whitespace_pattern)
+            dfa = build_dfa(dfa, tokenizer=tokenizer, include_tool_call=include_tool_call, whitespace_pattern=whitespace_pattern)
+        elif is_valid_regex(dfa):
+            regex = dfa
+            dfa = build_dfa(dfa, tokenizer=tokenizer, include_tool_call=include_tool_call, whitespace_pattern=whitespace_pattern)
+        else:
+            invalid_schema_error(dfa)
     elif isinstance(dfa, type) and issubclass(dfa, BaseModel):
         regex = build_regex(dfa,include_tool_call=include_tool_call, whitespace_pattern=whitespace_pattern)
         dfa = build_dfa(dfa, tokenizer=tokenizer, include_tool_call=include_tool_call, whitespace_pattern=whitespace_pattern)
     else:
-        raise ValueError(
-            f"Cannot parse schema {dfa}. The schema must be either "
-            + "a Pydantic class, a dict[int, dict[int, int]] or a string that contains the JSON "
-            + "schema specification"
-        )
+        invalid_schema_error(dfa)
 
     if trajectory != []:
         state_trajectory = from_token_trajectory_to_state_trajectory(trajectory,dfa)

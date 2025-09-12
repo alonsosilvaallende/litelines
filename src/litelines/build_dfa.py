@@ -4,8 +4,8 @@ from typing import Optional, Type, Union
 from outlines_core import Index, Vocabulary
 from pydantic import BaseModel
 
-from .build_regex import build_regex
-from .utils import PreTrainedTokenizer, PreTrainedTokenizerFast
+from litelines import build_regex
+from litelines.utils import PreTrainedTokenizer, PreTrainedTokenizerFast
 
 def my_recursive(
     state: int, index: Index, mapping: dict[int, int], visited: set[int], final_states: set[int]
@@ -54,7 +54,44 @@ def build_dfa(
     tool_call_end: str = "</tool_call>",
     whitespace_pattern: str = r"[\n\t\r ]*",
 ) -> dict[int, dict[int, int]]:
+    """Build a deterministic finite automaton that fullfils the response format requirement
 
+    Examples:
+        >>> from typing import Literal
+        >>> from pydantic import BaseModel, Field
+        >>> from transformers import AutoTokenizer
+        >>> from litelines import build_dfa
+        >>> 
+        >>> model_id = "Qwen/Qwen3-0.6B"
+        >>> tokenizer = AutoTokenizer.from_pretrained(model_id)
+        >>> build_dfa("A|B", tokenizer)
+        {0: {33: 1, 32: 1}}
+        >>> build_dfa("A0|B0", tokenizer)
+        {1: {15: 3}, 2: {15: 3}, 0: {33: 1, 32: 2}}
+        >>>
+        >>> class Sentiment(BaseModel):
+        ...     "Correctly inferred `Sentiment` with all the required parameters with correct types."
+        ...
+        ...     label: Literal["positive", "negative"] = Field(
+        ...         ..., description="Sentiment of the text"
+        ...     )
+        >>> build_dfa(Sentiment, tokenizer, whitespace_pattern="")
+        {18: {72: 15, 344: 17, 533: 16}, 9: {92: 28}, 20: {72: 21, 12303: 7, 275: 6, 3404: 8}, 23: {2974: 5, 25: 24}, 1: {14380: 2, 75: 25, 4260: 26, 1502: 4}, 14: {10251: 15, 83: 18}, 8: {9207: 28, 1: 9}, 22: {82: 20, 6321: 21, 46865: 6}, 4: {3252: 5, 1: 23, 788: 24}, 0: {4913: 1, 90: 27}, 13: {64: 14, 19488: 17, 266: 18, 1388: 16, 9307: 15}, 10: {68: 8}, 19: {436: 20, 78: 22, 34054: 6, 30724: 21}, 3: {75: 4}, 16: {9207: 28, 1: 9}, 12: {70: 13, 6743: 14}, 7: {586: 8, 85: 10}, 11: {68: 12, 15060: 16, 11188: 14, 791: 13}, 2: {68: 3, 301: 4}, 17: {68: 16}, 27: {92667: 4, 1: 1}, 6: {72: 7, 344: 10, 533: 8}, 5: {2724: 6, 77: 11, 28775: 13, 42224: 16, 79: 19, 5368: 22, 30487: 8, 966: 20, 811: 12}, 26: {1371: 3, 65: 2, 9779: 4}, 15: {586: 16, 85: 17}, 21: {10251: 7, 83: 6}, 24: {1: 5}, 25: {370: 2, 64: 26, 780: 4, 8229: 3}}
+
+    Args:
+        response_format: A Pydantic model, a dictionary, or a regular expression (as a string) that defines the expected response format
+        tokenizer: The model's tokenizer or the model name (as a string)
+        include_tool_call (optional): Is the Pydantic model expecting a tool call or not.
+        tool_call_start (optional): The expected tool call start.
+        tool_call_end (optional): The expected tool call end.
+        whitespace_pattern (optional): Pattern to use for JSON syntactic whitespace.
+
+    Returns:
+        The deterministic finite automaton as a dictionary.
+
+    Raises:
+        ValueError: An error occurs if the response format is not a Pydantic model, a dictionary, or a string that corresponds to the regular expression.
+    """
     if isinstance(response_format, str):
         regex_str = response_format
     elif isinstance(response_format, dict) or isinstance(response_format, type) and issubclass(response_format, BaseModel):
@@ -68,7 +105,7 @@ def build_dfa(
     else:
         raise ValueError(
             f"Cannot parse {response_format}. The schema must be either "
-            + "a Pydantic class, a dictionary or a string that corresponds to "
+            + "a Pydantic model, a dictionary or a string that corresponds to "
             + "the regular expression."
         )
 

@@ -17,6 +17,15 @@ from ..build_dfa import build_dfa
 from ..draw_dfa import draw_dfa
 
 class JSONProcessor(LogitsProcessor):
+    """Build the Logits Processor that enforces the response format
+
+    Examples:
+
+    Args:
+
+    Returns:
+        The logits processor that enforces the response format
+    """
     def __init__(
         self,
         response_format: Union[str, dict[int, dict[int, int]], Type[BaseModel]],
