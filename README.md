@@ -21,22 +21,25 @@ The only dependency is `outlines-core`.
 
 ## Basic Usage
 
+- Download a model and its tokenizer:
+```python
+from transformers import AutoModelForCausalLM, AutoTokenizer
+
+tokenizer = AutoTokenizer.from_pretrained(model_name)
+model = AutoModelForCausalLM.from_pretrained(model_name).to("cuda:0")
+```
+
 - Define a logits processor through a Pydantic schema or a regular expression and visualize it:
 ```python
 from litelines.transformers import SchemaProcessor
 
-processor = SchemaProcessor(r"Yes\.|No\.", tokenizer)
+processor = SchemaProcessor(response_format=r"Yes\.|No\.", tokenizer=tokenizer)
 processor.show_graph()
 ```
 <img src="index_figures/Yes_or_No.jpg" />
 
 - Generate a structured answer:
 ```python
-from transformers import AutoModelForCausalLM, AutoTokenizer
-
-tokenizer = AutoTokenizer.from_pretrained(model_name)
-model = AutoModelForCausalLM.from_pretrained(model_name).to("cuda:0")
-
 messages = [{"role": "user", "content": "Are you sentient?"}]
 inputs = tokenizer.apply_chat_template(
     messages, add_generation_prompt=True, return_tensors="pt", return_dict=True
@@ -82,18 +85,13 @@ Sentiment = """{'description': 'Correctly inferred `Sentiment` with all the requ
 ```python
 from litelines.transformers import SchemaProcessor
 
-processor = SchemaProcessor(Sentiment, tokenizer)
+processor = SchemaProcessor(response_format=Sentiment, tokenizer=tokenizer)
 processor.show_graph()
 ```
 <img src="index_figures/Guaranteed_JSON.jpg" />
 
 - Generate a structured answer:
 ```python
-from transformers import AutoModelForCausalLM, AutoTokenizer
-
-tokenizer = AutoTokenizer.from_pretrained(model_name)
-model = AutoModelForCausalLM.from_pretrained(model_name).to("cuda:0")
-
 messages = [{"role": "user", "content": "What is the sentiment of the following text: 'Awesome'"}]
 inputs = tokenizer.apply_chat_template(
     messages, add_generation_prompt=True, return_tensors="pt", return_dict=True
@@ -129,7 +127,7 @@ class Sentiment(BaseModel):
 ```python
 from litelines.transformers import SchemaProcessor
 
-processor = SchemaProcessor(Sentiment, tokenizer, include_tool_call=True)
+processor = SchemaProcessor(response_format=Sentiment, tokenizer=tokenizer, include_tool_call=True)
 processor.show_graph()
 ```
 <img src="index_figures/Guaranteed_Tool_Calling.jpg" />
@@ -176,18 +174,13 @@ class Sentiment(BaseModel):
 ```python
 from litelines.transformers import SchemaProcessor
 
-processor = SchemaProcessor(Sentiment, tokenizer, allow_preamble=True)
+processor = SchemaProcessor(response_format=Sentiment, tokenizer=tokenizer, allow_preamble=True)
 processor.show_graph()
 ```
 <img src="index_figures/Guaranteed_JSON.jpg" />
 
 - Generate a structured answer:
 ```python
-from transformers import AutoModelForCausalLM, AutoTokenizer
-
-tokenizer = AutoTokenizer.from_pretrained(model_name)
-model = AutoModelForCausalLM.from_pretrained(model_name).to("cuda:0")
-
 messages = [{"role": "user", "content": "What is the sentiment of the following text: 'Awesome'"}]
 inputs = tokenizer.apply_chat_template(
     messages, add_generation_prompt=True, return_tensors="pt", return_dict=True
@@ -203,4 +196,5 @@ print(tokenizer.decode(generated[0][inputs['input_ids'].shape[-1]:]))
 processor.show_graph()
 ```
 <img src="index_figures/Guaranteed_JSON_selected_path.jpg" />
+
 
