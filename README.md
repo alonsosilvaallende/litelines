@@ -23,9 +23,9 @@ The only dependency is `outlines-core`.
 
 - Define a logits processor through a Pydantic schema or a regular expression and visualize it:
 ```python
-from litelines.transformers import JSONProcessor
+from litelines.transformers import SchemaProcessor
 
-processor = JSONProcessor(r"Yes\.|No\.", tokenizer)
+processor = SchemaProcessor(r"Yes\.|No\.", tokenizer)
 processor.show_graph()
 ```
 <img src="index_figures/Yes_or_No.jpg" />
@@ -80,9 +80,9 @@ Sentiment = """{'description': 'Correctly inferred `Sentiment` with all the requ
 
 - Define the processor and visualize it:
 ```python
-from litelines.transformers import JSONProcessor
+from litelines.transformers import SchemaProcessor
 
-processor = JSONProcessor(Sentiment, tokenizer)
+processor = SchemaProcessor(Sentiment, tokenizer)
 processor.show_graph()
 ```
 <img src="index_figures/Guaranteed_JSON.jpg" />
@@ -127,9 +127,9 @@ class Sentiment(BaseModel):
 
 - Define the processor, add the parameter `include_tool_call=True` and visualize it:
 ```python
-from litelines.transformers import JSONProcessor
+from litelines.transformers import SchemaProcessor
 
-processor = JSONProcessor(Sentiment, tokenizer, include_tool_call=True)
+processor = SchemaProcessor(Sentiment, tokenizer, include_tool_call=True)
 processor.show_graph()
 ```
 <img src="index_figures/Guaranteed_Tool_Calling.jpg" />
@@ -174,9 +174,9 @@ class Sentiment(BaseModel):
 
 - Define the processor, add parameter `allow_preamble=True` and visualize it:
 ```python
-from litelines.transformers import JSONProcessor
+from litelines.transformers import SchemaProcessor
 
-processor = JSONProcessor(Sentiment, tokenizer, allow_preamble=True)
+processor = SchemaProcessor(Sentiment, tokenizer, allow_preamble=True)
 processor.show_graph()
 ```
 <img src="index_figures/Guaranteed_JSON.jpg" />

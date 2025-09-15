@@ -15,7 +15,7 @@ from ..build_dfa import build_dfa
 from ..draw_dfa import draw_dfa
 
 
-class JSONProcessor(LogitsProcessor):
+class SchemaProcessor(LogitsProcessor):
     """Build the Logits Processor that enforces the response format
 
     Examples:

@@ -1,3 +1,3 @@
-from .jsonprocessor import JSONProcessor
+from litelines.transformers.schemaprocessor import SchemaProcessor
 
-__all__ = ['JSONProcessor']
+__all__ = ['SchemaProcessor']
