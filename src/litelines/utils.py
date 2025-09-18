@@ -36,6 +36,16 @@ def _in_notebook() -> bool:
         return False
     return True
 
+def _in_marimo_notebook() -> bool:
+    try:
+        import marimo as mo
+        if mo.running_in_notebook():
+            return True
+        else:
+            return False
+    except ImportError:
+        return False
+
 def display_dot_graph(
     dot: str,
     render: bool = True,
@@ -58,6 +68,10 @@ def display_dot_graph(
         from IPython.display import SVG, display  # type: ignore
 
         return display(SVG(graph))
+    elif _in_marimo_notebook():
+        import marimo as mo
+
+        return mo.Html(f"{graph.decode()}")
     else:
         from pathlib import Path
 
