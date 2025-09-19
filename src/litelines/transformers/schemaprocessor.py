@@ -105,6 +105,7 @@ class SchemaProcessor(LogitsProcessor):
         self.current_state = 0
         self.final_states = None
         self.selected_token = None
+        self.trajectory = []
 
     def __call__(
         self, input_ids: torch.LongTensor, scores: torch.FloatTensor
