@@ -1,5 +1,8 @@
 site_name: Litelines
 
+repo_url: https://github.com/alonsosilvaallende/litelines
+repo_name: alonsosilvaallende/litelines
+
 theme:
   name: material
 
