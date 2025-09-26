@@ -1,0 +1,2503 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../installation/">
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.19">
+    
+    
+      
+        <title>Reference - Litelines</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.7e37652d.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#reference" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Litelines" class="md-header__button md-logo" aria-label="Litelines" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Litelines
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Reference
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Litelines" class="md-nav__button md-logo" aria-label="Litelines" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Litelines
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Getting Started
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../installation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Installation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Reference
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Reference
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#build_regex" class="md-nav__link">
+    <span class="md-ellipsis">
+      build_regex
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#src.litelines.build_regex.build_regex" class="md-nav__link">
+    <span class="md-ellipsis">
+      build_regex
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#build_dfa" class="md-nav__link">
+    <span class="md-ellipsis">
+      build_dfa
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#src.litelines.build_dfa.build_dfa" class="md-nav__link">
+    <span class="md-ellipsis">
+      build_dfa
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#draw_dfa" class="md-nav__link">
+    <span class="md-ellipsis">
+      draw_dfa
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#src.litelines.draw_dfa.draw_dfa" class="md-nav__link">
+    <span class="md-ellipsis">
+      draw_dfa
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#schema_processor" class="md-nav__link">
+    <span class="md-ellipsis">
+      Schema_Processor
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#src.litelines.transformers.schemaprocessor.SchemaProcessor" class="md-nav__link">
+    <span class="md-ellipsis">
+      SchemaProcessor
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#src.litelines.transformers.schemaprocessor.SchemaProcessor.reset_state" class="md-nav__link">
+    <span class="md-ellipsis">
+      reset_state
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#build_regex" class="md-nav__link">
+    <span class="md-ellipsis">
+      build_regex
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#src.litelines.build_regex.build_regex" class="md-nav__link">
+    <span class="md-ellipsis">
+      build_regex
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#build_dfa" class="md-nav__link">
+    <span class="md-ellipsis">
+      build_dfa
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#src.litelines.build_dfa.build_dfa" class="md-nav__link">
+    <span class="md-ellipsis">
+      build_dfa
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#draw_dfa" class="md-nav__link">
+    <span class="md-ellipsis">
+      draw_dfa
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#src.litelines.draw_dfa.draw_dfa" class="md-nav__link">
+    <span class="md-ellipsis">
+      draw_dfa
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#schema_processor" class="md-nav__link">
+    <span class="md-ellipsis">
+      Schema_Processor
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#src.litelines.transformers.schemaprocessor.SchemaProcessor" class="md-nav__link">
+    <span class="md-ellipsis">
+      SchemaProcessor
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#src.litelines.transformers.schemaprocessor.SchemaProcessor.reset_state" class="md-nav__link">
+    <span class="md-ellipsis">
+      reset_state
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="reference">Reference</h1>
+<h2 id="build_regex"><code>build_regex</code></h2>
+
+
+<div class="doc doc-object doc-function">
+
+
+
+<a id="src.litelines.build_regex.build_regex"></a>
+    <div class="doc doc-contents first">
+
+        <p>Convert a Pydantic model or JSON schema to a regex.</p>
+
+
+<p><span class="doc-section-title">Examples:</span></p>
+    <div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Literal</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">Field</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">litelines</span><span class="w"> </span><span class="kn">import</span> <span class="n">build_regex</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">class</span><span class="w"> </span><span class="nc">Sentiment</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="s2">&quot;Correctly inferred `Sentiment` with all the required parameters with correct types.&quot;</span>
+<span class="gp">...</span>
+<span class="gp">... </span>    <span class="n">label</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;positive&quot;</span><span class="p">,</span> <span class="s2">&quot;negative&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span>
+<span class="gp">... </span>        <span class="o">...</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Sentiment of the text&quot;</span>
+<span class="gp">... </span>    <span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">build_regex</span><span class="p">(</span><span class="n">Sentiment</span><span class="p">,</span> <span class="n">whitespace_pattern</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="go">&#39;\\{&quot;label&quot;:(&quot;positive&quot;|&quot;negative&quot;)\\}&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">build_regex</span><span class="p">(</span><span class="n">Sentiment</span><span class="p">,</span> <span class="n">whitespace_pattern</span><span class="o">=</span><span class="s2">&quot;[ ]?&quot;</span><span class="p">)</span>
+<span class="go">&#39;[ ]?\\{[ ]?&quot;label&quot;[ ]?:[ ]?(&quot;positive&quot;|&quot;negative&quot;)[ ]?\\}&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">build_regex</span><span class="p">(</span><span class="n">Sentiment</span><span class="p">)</span>
+<span class="go">&#39;[\\n\\t ]*\\{[\\n\\t ]*&quot;label&quot;[\\n\\t ]*:[\\n\\t ]*(&quot;positive&quot;|&quot;negative&quot;)[\\n\\t ]*\\}&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">build_regex</span><span class="p">(</span><span class="n">Sentiment</span><span class="p">,</span> <span class="n">include_tool_call</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">whitespace_pattern</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="go">&#39;&lt;tool_call&gt;\\{&quot;name&quot;:&quot;Sentiment&quot;,&quot;arguments&quot;:\\{&quot;label&quot;:(&quot;positive&quot;|&quot;negative&quot;)\\}\\}&lt;/tool_call&gt;&#39;</span>
+</code></pre></div>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>schema</code>
+            </td>
+            <td>
+                  <code><span title="typing.Union">Union</span>[<span title="dict">dict</span>, <span title="str">str</span>, <span title="typing.Type">Type</span>[<span title="typing.Any">Any</span>]]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The Pydantic model or JSON schema.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>include_tool_call</code>
+            </td>
+            <td>
+                  <code><span title="optional">optional</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Is the Pydantic model expecting a tool call or not.</p>
+              </div>
+            </td>
+            <td>
+                  <code>False</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>tool_call_start</code>
+            </td>
+            <td>
+                  <code><span title="optional">optional</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The expected tool call start.</p>
+              </div>
+            </td>
+            <td>
+                  <code>&#39;&lt;tool_call&gt;&#39;</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>tool_call_end</code>
+            </td>
+            <td>
+                  <code><span title="optional">optional</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The expected tool call end.</p>
+              </div>
+            </td>
+            <td>
+                  <code>&#39;&lt;/tool_call&gt;&#39;</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>whitespace_pattern</code>
+            </td>
+            <td>
+                  <code><span title="optional">optional</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Pattern to use for JSON syntactic whitespace.</p>
+              </div>
+            </td>
+            <td>
+                  <code>&#39;[\\n\\t ]*&#39;</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The JSON schema converted to a regex.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Raises:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="ValueError">ValueError</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>An error occurs if the schema is not a Pydantic model, a dictionary, or a string.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+            <details class="quote">
+              <summary>Source code in <code>src/litelines/build_regex.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span>
+<span class="normal">71</span>
+<span class="normal">72</span>
+<span class="normal">73</span>
+<span class="normal">74</span>
+<span class="normal">75</span>
+<span class="normal">76</span>
+<span class="normal">77</span>
+<span class="normal">78</span>
+<span class="normal">79</span>
+<span class="normal">80</span>
+<span class="normal">81</span>
+<span class="normal">82</span>
+<span class="normal">83</span>
+<span class="normal">84</span>
+<span class="normal">85</span>
+<span class="normal">86</span>
+<span class="normal">87</span>
+<span class="normal">88</span>
+<span class="normal">89</span>
+<span class="normal">90</span>
+<span class="normal">91</span>
+<span class="normal">92</span>
+<span class="normal">93</span>
+<span class="normal">94</span>
+<span class="normal">95</span>
+<span class="normal">96</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">build_regex</span><span class="p">(</span>
+    <span class="n">schema</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">dict</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="n">Type</span><span class="p">[</span><span class="n">Any</span><span class="p">]],</span>
+    <span class="n">include_tool_call</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">tool_call_start</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&lt;tool_call&gt;&quot;</span><span class="p">,</span>
+    <span class="n">tool_call_end</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&lt;/tool_call&gt;&quot;</span><span class="p">,</span>
+    <span class="n">whitespace_pattern</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;[\n\t ]*&quot;</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert a Pydantic model or JSON schema to a regex.</span>
+
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; from typing import Literal</span>
+<span class="sd">        &gt;&gt;&gt; from pydantic import BaseModel, Field</span>
+<span class="sd">        &gt;&gt;&gt; from litelines import build_regex</span>
+<span class="sd">        &gt;&gt;&gt;</span>
+<span class="sd">        &gt;&gt;&gt; class Sentiment(BaseModel):</span>
+<span class="sd">        ...     &quot;Correctly inferred `Sentiment` with all the required parameters with correct types.&quot;</span>
+<span class="sd">        ...</span>
+<span class="sd">        ...     label: Literal[&quot;positive&quot;, &quot;negative&quot;] = Field(</span>
+<span class="sd">        ...         ..., description=&quot;Sentiment of the text&quot;</span>
+<span class="sd">        ...     )</span>
+<span class="sd">        &gt;&gt;&gt; build_regex(Sentiment, whitespace_pattern=&quot;&quot;)</span>
+<span class="sd">        &#39;\\\\{&quot;label&quot;:(&quot;positive&quot;|&quot;negative&quot;)\\\\}&#39;</span>
+<span class="sd">        &gt;&gt;&gt; build_regex(Sentiment, whitespace_pattern=&quot;[ ]?&quot;)</span>
+<span class="sd">        &#39;[ ]?\\\\{[ ]?&quot;label&quot;[ ]?:[ ]?(&quot;positive&quot;|&quot;negative&quot;)[ ]?\\\\}&#39;</span>
+<span class="sd">        &gt;&gt;&gt; build_regex(Sentiment)</span>
+<span class="sd">        &#39;[\\\\n\\\\t ]*\\\\{[\\\\n\\\\t ]*&quot;label&quot;[\\\\n\\\\t ]*:[\\\\n\\\\t ]*(&quot;positive&quot;|&quot;negative&quot;)[\\\\n\\\\t ]*\\\\}&#39;</span>
+<span class="sd">        &gt;&gt;&gt; build_regex(Sentiment, include_tool_call=True, whitespace_pattern=&quot;&quot;)</span>
+<span class="sd">        &#39;&lt;tool_call&gt;\\\\{&quot;name&quot;:&quot;Sentiment&quot;,&quot;arguments&quot;:\\\\{&quot;label&quot;:(&quot;positive&quot;|&quot;negative&quot;)\\\\}\\\\}&lt;/tool_call&gt;&#39;</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        schema: The Pydantic model or JSON schema.</span>
+<span class="sd">        include_tool_call (optional): Is the Pydantic model expecting a tool call or not.</span>
+<span class="sd">        tool_call_start (optional): The expected tool call start.</span>
+<span class="sd">        tool_call_end (optional): The expected tool call end.</span>
+<span class="sd">        whitespace_pattern (optional): Pattern to use for JSON syntactic whitespace.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        The JSON schema converted to a regex.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        ValueError: An error occurs if the schema is not a Pydantic model, a dictionary, or a string.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">schema</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+        <span class="n">schema_str</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">schema</span><span class="p">)</span>
+        <span class="n">name_str</span> <span class="o">=</span> <span class="n">schema</span><span class="p">[</span><span class="s2">&quot;title&quot;</span><span class="p">]</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">schema</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="n">schema_str</span> <span class="o">=</span> <span class="n">schema</span>
+        <span class="n">name_str</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">schema</span><span class="p">)[</span><span class="s2">&quot;title&quot;</span><span class="p">]</span>
+    <span class="k">elif</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">schema</span><span class="p">,</span> <span class="s2">&quot;model_json_schema&quot;</span><span class="p">):</span>
+        <span class="n">schema_str</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">schema</span><span class="o">.</span><span class="n">model_json_schema</span><span class="p">())</span>
+        <span class="n">name_str</span> <span class="o">=</span> <span class="n">schema</span><span class="o">.</span><span class="vm">__name__</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;Cannot parse schema </span><span class="si">{</span><span class="n">schema</span><span class="si">}</span><span class="s2">. The schema must be either &quot;</span>
+            <span class="o">+</span> <span class="s2">&quot;a Pydantic class, a dictionary or a string that contains the JSON &quot;</span>
+            <span class="o">+</span> <span class="s2">&quot;schema specification&quot;</span>
+        <span class="p">)</span>
+    <span class="n">_regex_str</span> <span class="o">=</span> <span class="n">build_regex_from_schema</span><span class="p">(</span>
+        <span class="n">schema_str</span><span class="p">,</span> <span class="n">whitespace_pattern</span><span class="o">=</span><span class="n">whitespace_pattern</span>
+    <span class="p">)</span>
+    <span class="k">if</span> <span class="n">include_tool_call</span><span class="p">:</span>
+        <span class="n">regex_str</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">whitespace_pattern</span>
+            <span class="o">+</span> <span class="n">tool_call_start</span>
+            <span class="o">+</span> <span class="n">whitespace_pattern</span>
+            <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\\</span><span class="s2">{&quot;</span>
+            <span class="o">+</span> <span class="n">whitespace_pattern</span>
+            <span class="o">+</span> <span class="s1">&#39;&quot;name&quot;&#39;</span>
+            <span class="o">+</span> <span class="n">whitespace_pattern</span>
+            <span class="o">+</span> <span class="s2">&quot;:&quot;</span>
+            <span class="o">+</span> <span class="n">whitespace_pattern</span>
+            <span class="o">+</span> <span class="s1">&#39;&quot;&#39;</span>
+            <span class="o">+</span> <span class="n">name_str</span>
+            <span class="o">+</span> <span class="s1">&#39;&quot;&#39;</span>
+            <span class="o">+</span> <span class="n">whitespace_pattern</span>
+            <span class="o">+</span> <span class="s2">&quot;,&quot;</span>
+            <span class="o">+</span> <span class="n">whitespace_pattern</span>
+            <span class="o">+</span> <span class="s1">&#39;&quot;arguments&quot;&#39;</span>
+            <span class="o">+</span> <span class="n">whitespace_pattern</span>
+            <span class="o">+</span> <span class="s2">&quot;:&quot;</span>
+            <span class="o">+</span> <span class="n">whitespace_pattern</span>
+            <span class="o">+</span> <span class="n">_regex_str</span>
+            <span class="o">+</span> <span class="n">whitespace_pattern</span>
+            <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\\</span><span class="s2">}&quot;</span>
+            <span class="o">+</span> <span class="n">whitespace_pattern</span>
+            <span class="o">+</span> <span class="n">tool_call_end</span>
+        <span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">regex_str</span> <span class="o">=</span> <span class="n">whitespace_pattern</span> <span class="o">+</span> <span class="n">_regex_str</span>
+    <span class="k">return</span> <span class="n">regex_str</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div><h2 id="build_dfa"><code>build_dfa</code></h2>
+
+
+<div class="doc doc-object doc-function">
+
+
+
+<a id="src.litelines.build_dfa.build_dfa"></a>
+    <div class="doc doc-contents first">
+
+        <p>Build a deterministic finite automaton that fullfils the response format requirement</p>
+
+
+<p><span class="doc-section-title">Examples:</span></p>
+    <div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Literal</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">Field</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">transformers</span><span class="w"> </span><span class="kn">import</span> <span class="n">AutoTokenizer</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">litelines</span><span class="w"> </span><span class="kn">import</span> <span class="n">build_dfa</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model_id</span> <span class="o">=</span> <span class="s2">&quot;Qwen/Qwen3-0.6B&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tokenizer</span> <span class="o">=</span> <span class="n">AutoTokenizer</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="n">model_id</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">build_dfa</span><span class="p">(</span><span class="s2">&quot;A|B&quot;</span><span class="p">,</span> <span class="n">tokenizer</span><span class="p">)</span>
+<span class="go">{0: {33: 1, 32: 1}}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">build_dfa</span><span class="p">(</span><span class="s2">&quot;A0|B0&quot;</span><span class="p">,</span> <span class="n">tokenizer</span><span class="p">)</span>
+<span class="go">{1: {15: 3}, 2: {15: 3}, 0: {33: 1, 32: 2}}</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">class</span><span class="w"> </span><span class="nc">Sentiment</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="s2">&quot;Correctly inferred `Sentiment` with all the required parameters with correct types.&quot;</span>
+<span class="gp">...</span>
+<span class="gp">... </span>    <span class="n">label</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;positive&quot;</span><span class="p">,</span> <span class="s2">&quot;negative&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span>
+<span class="gp">... </span>        <span class="o">...</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Sentiment of the text&quot;</span>
+<span class="gp">... </span>    <span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">build_dfa</span><span class="p">(</span><span class="n">Sentiment</span><span class="p">,</span> <span class="n">tokenizer</span><span class="p">,</span> <span class="n">whitespace_pattern</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="go">{18: {72: 15, 344: 17, 533: 16}, 9: {92: 28}, 20: {72: 21, 12303: 7, 275: 6, 3404: 8}, 23: {2974: 5, 25: 24}, 1: {14380: 2, 75: 25, 4260: 26, 1502: 4}, 14: {10251: 15, 83: 18}, 8: {9207: 28, 1: 9}, 22: {82: 20, 6321: 21, 46865: 6}, 4: {3252: 5, 1: 23, 788: 24}, 0: {4913: 1, 90: 27}, 13: {64: 14, 19488: 17, 266: 18, 1388: 16, 9307: 15}, 10: {68: 8}, 19: {436: 20, 78: 22, 34054: 6, 30724: 21}, 3: {75: 4}, 16: {9207: 28, 1: 9}, 12: {70: 13, 6743: 14}, 7: {586: 8, 85: 10}, 11: {68: 12, 15060: 16, 11188: 14, 791: 13}, 2: {68: 3, 301: 4}, 17: {68: 16}, 27: {92667: 4, 1: 1}, 6: {72: 7, 344: 10, 533: 8}, 5: {2724: 6, 77: 11, 28775: 13, 42224: 16, 79: 19, 5368: 22, 30487: 8, 966: 20, 811: 12}, 26: {1371: 3, 65: 2, 9779: 4}, 15: {586: 16, 85: 17}, 21: {10251: 7, 83: 6}, 24: {1: 5}, 25: {370: 2, 64: 26, 780: 4, 8229: 3}}</span>
+</code></pre></div>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>response_format</code>
+            </td>
+            <td>
+                  <code><span title="typing.Union">Union</span>[<span title="dict">dict</span>, <span title="str">str</span>, <span title="typing.Type">Type</span>[<span title="typing.Any">Any</span>]]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>A Pydantic model, a dictionary, or a regular expression (as a string) that defines the expected response format</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>tokenizer</code>
+            </td>
+            <td>
+                  <code><span title="typing.Union">Union</span>[<span title="str">str</span>, <span title="litelines.utils.PreTrainedTokenizer">PreTrainedTokenizer</span>, <span title="litelines.utils.PreTrainedTokenizerFast">PreTrainedTokenizerFast</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The model's tokenizer or the model name (as a string)</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>include_tool_call</code>
+            </td>
+            <td>
+                  <code><span title="optional">optional</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Is the Pydantic model expecting a tool call or not.</p>
+              </div>
+            </td>
+            <td>
+                  <code>False</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>tool_call_start</code>
+            </td>
+            <td>
+                  <code><span title="optional">optional</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The expected tool call start.</p>
+              </div>
+            </td>
+            <td>
+                  <code>&#39;&lt;tool_call&gt;&#39;</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>tool_call_end</code>
+            </td>
+            <td>
+                  <code><span title="optional">optional</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The expected tool call end.</p>
+              </div>
+            </td>
+            <td>
+                  <code>&#39;&lt;/tool_call&gt;&#39;</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>whitespace_pattern</code>
+            </td>
+            <td>
+                  <code><span title="optional">optional</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Pattern to use for JSON syntactic whitespace.</p>
+              </div>
+            </td>
+            <td>
+                  <code>&#39;[\\n\\t\\r ]*&#39;</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="dict">dict</span>[<span title="int">int</span>, <span title="dict">dict</span>[<span title="int">int</span>, <span title="int">int</span>]]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The deterministic finite automaton as a dictionary.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Raises:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="ValueError">ValueError</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>An error occurs if the response format is not a Pydantic model, a dictionary, or a string that corresponds to the regular expression.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+            <details class="quote">
+              <summary>Source code in <code>src/litelines/build_dfa.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span>
+<span class="normal">148</span>
+<span class="normal">149</span>
+<span class="normal">150</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">build_dfa</span><span class="p">(</span>
+    <span class="n">response_format</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">dict</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="n">Type</span><span class="p">[</span><span class="n">Any</span><span class="p">]],</span>
+    <span class="n">tokenizer</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">PreTrainedTokenizer</span><span class="p">,</span> <span class="n">PreTrainedTokenizerFast</span><span class="p">],</span>
+    <span class="n">include_tool_call</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">tool_call_start</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&lt;tool_call&gt;&quot;</span><span class="p">,</span>
+    <span class="n">tool_call_end</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&lt;/tool_call&gt;&quot;</span><span class="p">,</span>
+    <span class="n">whitespace_pattern</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;[\n\t\r ]*&quot;</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Build a deterministic finite automaton that fullfils the response format requirement</span>
+
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; from typing import Literal</span>
+<span class="sd">        &gt;&gt;&gt; from pydantic import BaseModel, Field</span>
+<span class="sd">        &gt;&gt;&gt; from transformers import AutoTokenizer</span>
+<span class="sd">        &gt;&gt;&gt; from litelines import build_dfa</span>
+<span class="sd">        &gt;&gt;&gt;</span>
+<span class="sd">        &gt;&gt;&gt; model_id = &quot;Qwen/Qwen3-0.6B&quot;</span>
+<span class="sd">        &gt;&gt;&gt; tokenizer = AutoTokenizer.from_pretrained(model_id)</span>
+<span class="sd">        &gt;&gt;&gt; build_dfa(&quot;A|B&quot;, tokenizer)</span>
+<span class="sd">        {0: {33: 1, 32: 1}}</span>
+<span class="sd">        &gt;&gt;&gt; build_dfa(&quot;A0|B0&quot;, tokenizer)</span>
+<span class="sd">        {1: {15: 3}, 2: {15: 3}, 0: {33: 1, 32: 2}}</span>
+<span class="sd">        &gt;&gt;&gt;</span>
+<span class="sd">        &gt;&gt;&gt; class Sentiment(BaseModel):</span>
+<span class="sd">        ...     &quot;Correctly inferred `Sentiment` with all the required parameters with correct types.&quot;</span>
+<span class="sd">        ...</span>
+<span class="sd">        ...     label: Literal[&quot;positive&quot;, &quot;negative&quot;] = Field(</span>
+<span class="sd">        ...         ..., description=&quot;Sentiment of the text&quot;</span>
+<span class="sd">        ...     )</span>
+<span class="sd">        &gt;&gt;&gt; build_dfa(Sentiment, tokenizer, whitespace_pattern=&quot;&quot;)</span>
+<span class="sd">        {18: {72: 15, 344: 17, 533: 16}, 9: {92: 28}, 20: {72: 21, 12303: 7, 275: 6, 3404: 8}, 23: {2974: 5, 25: 24}, 1: {14380: 2, 75: 25, 4260: 26, 1502: 4}, 14: {10251: 15, 83: 18}, 8: {9207: 28, 1: 9}, 22: {82: 20, 6321: 21, 46865: 6}, 4: {3252: 5, 1: 23, 788: 24}, 0: {4913: 1, 90: 27}, 13: {64: 14, 19488: 17, 266: 18, 1388: 16, 9307: 15}, 10: {68: 8}, 19: {436: 20, 78: 22, 34054: 6, 30724: 21}, 3: {75: 4}, 16: {9207: 28, 1: 9}, 12: {70: 13, 6743: 14}, 7: {586: 8, 85: 10}, 11: {68: 12, 15060: 16, 11188: 14, 791: 13}, 2: {68: 3, 301: 4}, 17: {68: 16}, 27: {92667: 4, 1: 1}, 6: {72: 7, 344: 10, 533: 8}, 5: {2724: 6, 77: 11, 28775: 13, 42224: 16, 79: 19, 5368: 22, 30487: 8, 966: 20, 811: 12}, 26: {1371: 3, 65: 2, 9779: 4}, 15: {586: 16, 85: 17}, 21: {10251: 7, 83: 6}, 24: {1: 5}, 25: {370: 2, 64: 26, 780: 4, 8229: 3}}</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        response_format: A Pydantic model, a dictionary, or a regular expression (as a string) that defines the expected response format</span>
+<span class="sd">        tokenizer: The model&#39;s tokenizer or the model name (as a string)</span>
+<span class="sd">        include_tool_call (optional): Is the Pydantic model expecting a tool call or not.</span>
+<span class="sd">        tool_call_start (optional): The expected tool call start.</span>
+<span class="sd">        tool_call_end (optional): The expected tool call end.</span>
+<span class="sd">        whitespace_pattern (optional): Pattern to use for JSON syntactic whitespace.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        The deterministic finite automaton as a dictionary.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        ValueError: An error occurs if the response format is not a Pydantic model, a dictionary, or a string that corresponds to the regular expression.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">response_format</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">is_valid_json</span><span class="p">(</span><span class="n">response_format</span><span class="p">):</span>
+            <span class="n">regex_str</span> <span class="o">=</span> <span class="n">build_regex</span><span class="p">(</span>
+                <span class="n">response_format</span><span class="p">,</span>
+                <span class="n">include_tool_call</span><span class="o">=</span><span class="n">include_tool_call</span><span class="p">,</span>
+                <span class="n">whitespace_pattern</span><span class="o">=</span><span class="n">whitespace_pattern</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="k">elif</span> <span class="n">is_valid_regex</span><span class="p">(</span><span class="n">response_format</span><span class="p">):</span>
+            <span class="n">regex_str</span> <span class="o">=</span> <span class="n">response_format</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">invalid_schema_error</span><span class="p">(</span><span class="n">response_format</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">response_format</span><span class="p">,</span> <span class="nb">dict</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">hasattr</span><span class="p">(</span>
+        <span class="n">response_format</span><span class="p">,</span> <span class="s2">&quot;model_json_schema&quot;</span>
+    <span class="p">):</span>
+        <span class="n">regex_str</span> <span class="o">=</span> <span class="n">build_regex</span><span class="p">(</span>
+            <span class="n">response_format</span><span class="p">,</span>
+            <span class="n">include_tool_call</span><span class="o">=</span><span class="n">include_tool_call</span><span class="p">,</span>
+            <span class="n">tool_call_start</span><span class="o">=</span><span class="n">tool_call_start</span><span class="p">,</span>
+            <span class="n">tool_call_end</span><span class="o">=</span><span class="n">tool_call_end</span><span class="p">,</span>
+            <span class="n">whitespace_pattern</span><span class="o">=</span><span class="n">whitespace_pattern</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">invalid_schema_error</span><span class="p">(</span><span class="n">response_format</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">tokenizer</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="n">model_name</span> <span class="o">=</span> <span class="n">tokenizer</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">tokenizer</span><span class="p">,</span> <span class="p">(</span><span class="n">PreTrainedTokenizer</span><span class="p">,</span> <span class="n">PreTrainedTokenizerFast</span><span class="p">)):</span>
+        <span class="n">model_name</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">tokenizer</span><span class="p">,</span> <span class="s2">&quot;name_or_path&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">model_name</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;Could not determine model name from tokenizer. &quot;</span>
+                <span class="o">+</span> <span class="s2">&quot;You can pass it directly to the build_dfa function.&quot;</span>
+            <span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="s2">&quot;The tokenizer must be either &quot;</span>
+            <span class="o">+</span> <span class="s2">&quot;a PreTrainedTokenizer, a PreTrainedTokenizerFast &quot;</span>
+            <span class="o">+</span> <span class="s2">&quot;or a string that corresponds to the model name.&quot;</span>
+        <span class="p">)</span>
+
+    <span class="n">vocabulary</span> <span class="o">=</span> <span class="n">Vocabulary</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="n">model_name</span><span class="p">)</span>
+    <span class="n">index</span> <span class="o">=</span> <span class="n">Index</span><span class="p">(</span><span class="n">regex_str</span><span class="p">,</span> <span class="n">vocabulary</span><span class="p">)</span>
+    <span class="n">dfa</span> <span class="o">=</span> <span class="n">get_dfa</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">dfa</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div><h2 id="draw_dfa"><code>draw_dfa</code></h2>
+
+
+<div class="doc doc-object doc-function">
+
+
+
+<a id="src.litelines.draw_dfa.draw_dfa"></a>
+    <div class="doc doc-contents first">
+
+        <p>Create a graphical representation of a Deterministic Finite Automaton (DFA) using Graphviz DOT language.</p>
+<p>The function visualizes the DFA with:</p>
+<ul>
+<li>states as circles (double circles for final states)</li>
+<li>directed edges showing transitions between states</li>
+<li>edge labels containing tables of token IDs and their corresponding text</li>
+<li>optional red highlighting for edges in the provided trajectory</li>
+</ul>
+
+
+<p><span class="doc-section-title">Examples:</span></p>
+    <div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Literal</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">Field</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">transformers</span><span class="w"> </span><span class="kn">import</span> <span class="n">AutoTokenizer</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">litelines</span><span class="w"> </span><span class="kn">import</span> <span class="n">build_dfa</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model_id</span> <span class="o">=</span> <span class="s2">&quot;Qwen/Qwen3-0.6B&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tokenizer</span> <span class="o">=</span> <span class="n">AutoTokenizer</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="n">model_id</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">draw_dfa</span><span class="p">(</span><span class="s2">&quot;A|B&quot;</span><span class="p">,</span> <span class="n">tokenizer</span><span class="p">,</span> <span class="n">render</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="go">#</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">draw_dfa</span><span class="p">(</span><span class="s2">&quot;A0|B0&quot;</span><span class="p">,</span> <span class="n">tokenizer</span><span class="p">,</span> <span class="n">render</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="go">#</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">class</span><span class="w"> </span><span class="nc">Sentiment</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="s2">&quot;Correctly inferred `Sentiment` with all the required parameters with correct types.&quot;</span>
+<span class="gp">...</span>
+<span class="gp">... </span>    <span class="n">label</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;positive&quot;</span><span class="p">,</span> <span class="s2">&quot;negative&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span>
+<span class="gp">... </span>        <span class="o">...</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Sentiment of the text&quot;</span>
+<span class="gp">... </span>    <span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">draw_dfa</span><span class="p">(</span><span class="n">Sentiment</span><span class="p">,</span> <span class="n">tokenizer</span><span class="p">,</span> <span class="n">whitespace_pattern</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="go">#</span>
+</code></pre></div>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>dfa</code>
+            </td>
+            <td>
+                  <code><span title="typing.Union">Union</span>[<span title="dict">dict</span>[<span title="int">int</span>, <span title="dict">dict</span>[<span title="int">int</span>, <span title="int">int</span>]], <span title="str">str</span>, <span title="typing.Type">Type</span>[<span title="typing.Any">Any</span>]]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The DFA representation, which can be either:
+A dictionary mapping states to their transitions
+A JSON schema string
+A Pydantic schema</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>tokenizer</code>
+            </td>
+            <td>
+                  <code><span title="typing.Union">Union</span>[<span title="src.litelines.utils.PreTrainedTokenizer">PreTrainedTokenizer</span>, <span title="src.litelines.utils.PreTrainedTokenizerFast">PreTrainedTokenizerFast</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The tokenizer used to decode token IDs into readable text</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>trajectory</code>
+            </td>
+            <td>
+                  <code><span title="list">list</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Optional list of tokens representing a path through the DFA</p>
+              </div>
+            </td>
+            <td>
+                  <code>[]</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>include_tool_call</code>
+            </td>
+            <td>
+                  <code><span title="optional">optional</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Is the Pydantic model expecting a tool call or not.</p>
+              </div>
+            </td>
+            <td>
+                  <code>False</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>tool_call_start</code>
+            </td>
+            <td>
+                  <code><span title="optional">optional</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The expected tool call start.</p>
+              </div>
+            </td>
+            <td>
+                  <code>&#39;&lt;tool_call&gt;&#39;</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>tool_call_end</code>
+            </td>
+            <td>
+                  <code><span title="optional">optional</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The expected tool call end.</p>
+              </div>
+            </td>
+            <td>
+                  <code>&#39;&lt;/tool_call&gt;&#39;</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>whitespace_pattern</code>
+            </td>
+            <td>
+                  <code><span title="optional">optional</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Pattern to use for JSON syntactic whitespace.</p>
+              </div>
+            </td>
+            <td>
+                  <code>&#39;[\\n\\t ]*&#39;</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>max_labels_per_edge</code>
+            </td>
+            <td>
+                  <code><span title="optional">optional</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Maximum number of labels to show per edge</p>
+              </div>
+            </td>
+            <td>
+                  <code>3</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>remove_outer_whitespace</code>
+            </td>
+            <td>
+                  <code><span title="optional">optional</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Whether to strip whitespace from token labels in the table.</p>
+              </div>
+            </td>
+            <td>
+                  <code>True</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>render</code>
+            </td>
+            <td>
+                  <code><span title="optional">optional</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Whether to return a rendered Graphviz Source object or raw DOT string</p>
+              </div>
+            </td>
+            <td>
+                  <code>True</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="str">str</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>A Graphviz Source object if render=True, otherwise the DOT language string</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+            <details class="quote">
+              <summary>Source code in <code>src/litelines/draw_dfa.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">194</span>
+<span class="normal">195</span>
+<span class="normal">196</span>
+<span class="normal">197</span>
+<span class="normal">198</span>
+<span class="normal">199</span>
+<span class="normal">200</span>
+<span class="normal">201</span>
+<span class="normal">202</span>
+<span class="normal">203</span>
+<span class="normal">204</span>
+<span class="normal">205</span>
+<span class="normal">206</span>
+<span class="normal">207</span>
+<span class="normal">208</span>
+<span class="normal">209</span>
+<span class="normal">210</span>
+<span class="normal">211</span>
+<span class="normal">212</span>
+<span class="normal">213</span>
+<span class="normal">214</span>
+<span class="normal">215</span>
+<span class="normal">216</span>
+<span class="normal">217</span>
+<span class="normal">218</span>
+<span class="normal">219</span>
+<span class="normal">220</span>
+<span class="normal">221</span>
+<span class="normal">222</span>
+<span class="normal">223</span>
+<span class="normal">224</span>
+<span class="normal">225</span>
+<span class="normal">226</span>
+<span class="normal">227</span>
+<span class="normal">228</span>
+<span class="normal">229</span>
+<span class="normal">230</span>
+<span class="normal">231</span>
+<span class="normal">232</span>
+<span class="normal">233</span>
+<span class="normal">234</span>
+<span class="normal">235</span>
+<span class="normal">236</span>
+<span class="normal">237</span>
+<span class="normal">238</span>
+<span class="normal">239</span>
+<span class="normal">240</span>
+<span class="normal">241</span>
+<span class="normal">242</span>
+<span class="normal">243</span>
+<span class="normal">244</span>
+<span class="normal">245</span>
+<span class="normal">246</span>
+<span class="normal">247</span>
+<span class="normal">248</span>
+<span class="normal">249</span>
+<span class="normal">250</span>
+<span class="normal">251</span>
+<span class="normal">252</span>
+<span class="normal">253</span>
+<span class="normal">254</span>
+<span class="normal">255</span>
+<span class="normal">256</span>
+<span class="normal">257</span>
+<span class="normal">258</span>
+<span class="normal">259</span>
+<span class="normal">260</span>
+<span class="normal">261</span>
+<span class="normal">262</span>
+<span class="normal">263</span>
+<span class="normal">264</span>
+<span class="normal">265</span>
+<span class="normal">266</span>
+<span class="normal">267</span>
+<span class="normal">268</span>
+<span class="normal">269</span>
+<span class="normal">270</span>
+<span class="normal">271</span>
+<span class="normal">272</span>
+<span class="normal">273</span>
+<span class="normal">274</span>
+<span class="normal">275</span>
+<span class="normal">276</span>
+<span class="normal">277</span>
+<span class="normal">278</span>
+<span class="normal">279</span>
+<span class="normal">280</span>
+<span class="normal">281</span>
+<span class="normal">282</span>
+<span class="normal">283</span>
+<span class="normal">284</span>
+<span class="normal">285</span>
+<span class="normal">286</span>
+<span class="normal">287</span>
+<span class="normal">288</span>
+<span class="normal">289</span>
+<span class="normal">290</span>
+<span class="normal">291</span>
+<span class="normal">292</span>
+<span class="normal">293</span>
+<span class="normal">294</span>
+<span class="normal">295</span>
+<span class="normal">296</span>
+<span class="normal">297</span>
+<span class="normal">298</span>
+<span class="normal">299</span>
+<span class="normal">300</span>
+<span class="normal">301</span>
+<span class="normal">302</span>
+<span class="normal">303</span>
+<span class="normal">304</span>
+<span class="normal">305</span>
+<span class="normal">306</span>
+<span class="normal">307</span>
+<span class="normal">308</span>
+<span class="normal">309</span>
+<span class="normal">310</span>
+<span class="normal">311</span>
+<span class="normal">312</span>
+<span class="normal">313</span>
+<span class="normal">314</span>
+<span class="normal">315</span>
+<span class="normal">316</span>
+<span class="normal">317</span>
+<span class="normal">318</span>
+<span class="normal">319</span>
+<span class="normal">320</span>
+<span class="normal">321</span>
+<span class="normal">322</span>
+<span class="normal">323</span>
+<span class="normal">324</span>
+<span class="normal">325</span>
+<span class="normal">326</span>
+<span class="normal">327</span>
+<span class="normal">328</span>
+<span class="normal">329</span>
+<span class="normal">330</span>
+<span class="normal">331</span>
+<span class="normal">332</span>
+<span class="normal">333</span>
+<span class="normal">334</span>
+<span class="normal">335</span>
+<span class="normal">336</span>
+<span class="normal">337</span>
+<span class="normal">338</span>
+<span class="normal">339</span>
+<span class="normal">340</span>
+<span class="normal">341</span>
+<span class="normal">342</span>
+<span class="normal">343</span>
+<span class="normal">344</span>
+<span class="normal">345</span>
+<span class="normal">346</span>
+<span class="normal">347</span>
+<span class="normal">348</span>
+<span class="normal">349</span>
+<span class="normal">350</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">draw_dfa</span><span class="p">(</span>
+    <span class="n">dfa</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]],</span> <span class="nb">str</span><span class="p">,</span> <span class="n">Type</span><span class="p">[</span><span class="n">Any</span><span class="p">]],</span>
+    <span class="n">tokenizer</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">PreTrainedTokenizer</span><span class="p">,</span> <span class="n">PreTrainedTokenizerFast</span><span class="p">],</span>
+    <span class="n">trajectory</span><span class="p">:</span> <span class="nb">list</span> <span class="o">=</span> <span class="p">[],</span>
+    <span class="n">include_tool_call</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">tool_call_start</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&lt;tool_call&gt;&quot;</span><span class="p">,</span>
+    <span class="n">tool_call_end</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&lt;/tool_call&gt;&quot;</span><span class="p">,</span>
+    <span class="n">whitespace_pattern</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;[\n\t ]*&quot;</span><span class="p">,</span>
+    <span class="n">max_labels_per_edge</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="n">remove_outer_whitespace</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">ratio</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">size</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">render</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create a graphical representation of a Deterministic Finite Automaton (DFA) using Graphviz DOT language.</span>
+
+<span class="sd">    The function visualizes the DFA with:</span>
+
+<span class="sd">    - states as circles (double circles for final states)</span>
+<span class="sd">    - directed edges showing transitions between states</span>
+<span class="sd">    - edge labels containing tables of token IDs and their corresponding text</span>
+<span class="sd">    - optional red highlighting for edges in the provided trajectory</span>
+
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; from typing import Literal</span>
+<span class="sd">        &gt;&gt;&gt; from pydantic import BaseModel, Field</span>
+<span class="sd">        &gt;&gt;&gt; from transformers import AutoTokenizer</span>
+<span class="sd">        &gt;&gt;&gt; from litelines import build_dfa</span>
+<span class="sd">        &gt;&gt;&gt;</span>
+<span class="sd">        &gt;&gt;&gt; model_id = &quot;Qwen/Qwen3-0.6B&quot;</span>
+<span class="sd">        &gt;&gt;&gt; tokenizer = AutoTokenizer.from_pretrained(model_id)</span>
+<span class="sd">        &gt;&gt;&gt; draw_dfa(&quot;A|B&quot;, tokenizer, render=False)</span>
+<span class="sd">        #</span>
+<span class="sd">        &gt;&gt;&gt; draw_dfa(&quot;A0|B0&quot;, tokenizer, render=False)</span>
+<span class="sd">        #</span>
+<span class="sd">        &gt;&gt;&gt;</span>
+<span class="sd">        &gt;&gt;&gt; class Sentiment(BaseModel):</span>
+<span class="sd">        ...     &quot;Correctly inferred `Sentiment` with all the required parameters with correct types.&quot;</span>
+<span class="sd">        ...</span>
+<span class="sd">        ...     label: Literal[&quot;positive&quot;, &quot;negative&quot;] = Field(</span>
+<span class="sd">        ...         ..., description=&quot;Sentiment of the text&quot;</span>
+<span class="sd">        ...     )</span>
+<span class="sd">        &gt;&gt;&gt; draw_dfa(Sentiment, tokenizer, whitespace_pattern=&quot;&quot;)</span>
+<span class="sd">        #</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        dfa: The DFA representation, which can be either:</span>
+<span class="sd">            A dictionary mapping states to their transitions</span>
+<span class="sd">            A JSON schema string</span>
+<span class="sd">            A Pydantic schema</span>
+<span class="sd">        tokenizer: The tokenizer used to decode token IDs into readable text</span>
+<span class="sd">        trajectory: Optional list of tokens representing a path through the DFA</span>
+<span class="sd">        include_tool_call (optional): Is the Pydantic model expecting a tool call or not.</span>
+<span class="sd">        tool_call_start (optional): The expected tool call start.</span>
+<span class="sd">        tool_call_end (optional): The expected tool call end.</span>
+<span class="sd">        whitespace_pattern (optional): Pattern to use for JSON syntactic whitespace.</span>
+<span class="sd">        max_labels_per_edge (optional): Maximum number of labels to show per edge</span>
+<span class="sd">        remove_outer_whitespace (optional): Whether to strip whitespace from token labels in the table.</span>
+<span class="sd">        render (optional): Whether to return a rendered Graphviz Source object or raw DOT string</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        A Graphviz Source object if render=True, otherwise the DOT language string</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">dfa</span><span class="p">,</span> <span class="nb">dict</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">all</span><span class="p">(</span>
+        <span class="nb">isinstance</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span>
+        <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="nb">dict</span><span class="p">)</span>
+        <span class="ow">and</span> <span class="nb">all</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">k2</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">v2</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span> <span class="k">for</span> <span class="n">k2</span><span class="p">,</span> <span class="n">v2</span> <span class="ow">in</span> <span class="n">v</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+        <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">dfa</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+    <span class="p">):</span>
+        <span class="n">regex</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+        <span class="n">dfa</span> <span class="o">=</span> <span class="n">dfa</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">dfa</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">is_valid_json</span><span class="p">(</span><span class="n">dfa</span><span class="p">):</span>
+            <span class="n">regex</span> <span class="o">=</span> <span class="n">build_regex</span><span class="p">(</span>
+                <span class="n">dfa</span><span class="p">,</span>
+                <span class="n">include_tool_call</span><span class="o">=</span><span class="n">include_tool_call</span><span class="p">,</span>
+                <span class="n">whitespace_pattern</span><span class="o">=</span><span class="n">whitespace_pattern</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="n">dfa</span> <span class="o">=</span> <span class="n">build_dfa</span><span class="p">(</span>
+                <span class="n">dfa</span><span class="p">,</span>
+                <span class="n">tokenizer</span><span class="o">=</span><span class="n">tokenizer</span><span class="p">,</span>
+                <span class="n">include_tool_call</span><span class="o">=</span><span class="n">include_tool_call</span><span class="p">,</span>
+                <span class="n">whitespace_pattern</span><span class="o">=</span><span class="n">whitespace_pattern</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="k">elif</span> <span class="n">is_valid_regex</span><span class="p">(</span><span class="n">dfa</span><span class="p">):</span>
+            <span class="n">regex</span> <span class="o">=</span> <span class="n">dfa</span>
+            <span class="n">dfa</span> <span class="o">=</span> <span class="n">build_dfa</span><span class="p">(</span>
+                <span class="n">dfa</span><span class="p">,</span>
+                <span class="n">tokenizer</span><span class="o">=</span><span class="n">tokenizer</span><span class="p">,</span>
+                <span class="n">include_tool_call</span><span class="o">=</span><span class="n">include_tool_call</span><span class="p">,</span>
+                <span class="n">whitespace_pattern</span><span class="o">=</span><span class="n">whitespace_pattern</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">invalid_schema_error</span><span class="p">(</span><span class="n">dfa</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">dfa</span><span class="p">,</span> <span class="s2">&quot;model_json_schema&quot;</span><span class="p">):</span>
+        <span class="n">regex</span> <span class="o">=</span> <span class="n">build_regex</span><span class="p">(</span>
+            <span class="n">dfa</span><span class="p">,</span>
+            <span class="n">include_tool_call</span><span class="o">=</span><span class="n">include_tool_call</span><span class="p">,</span>
+            <span class="n">whitespace_pattern</span><span class="o">=</span><span class="n">whitespace_pattern</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">dfa</span> <span class="o">=</span> <span class="n">build_dfa</span><span class="p">(</span>
+            <span class="n">dfa</span><span class="p">,</span>
+            <span class="n">tokenizer</span><span class="o">=</span><span class="n">tokenizer</span><span class="p">,</span>
+            <span class="n">include_tool_call</span><span class="o">=</span><span class="n">include_tool_call</span><span class="p">,</span>
+            <span class="n">whitespace_pattern</span><span class="o">=</span><span class="n">whitespace_pattern</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">invalid_schema_error</span><span class="p">(</span><span class="n">dfa</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">trajectory</span> <span class="o">!=</span> <span class="p">[]:</span>
+        <span class="n">state_trajectory</span> <span class="o">=</span> <span class="n">from_token_trajectory_to_state_trajectory</span><span class="p">(</span><span class="n">trajectory</span><span class="p">,</span> <span class="n">dfa</span><span class="p">)</span>
+
+    <span class="n">states</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">dfa</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">final_states</span> <span class="o">=</span> <span class="p">{</span><span class="n">state</span> <span class="k">for</span> <span class="n">state</span> <span class="ow">in</span> <span class="n">states</span> <span class="k">if</span> <span class="n">state</span> <span class="ow">not</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">dfa</span><span class="o">.</span><span class="n">keys</span><span class="p">())}</span>
+    <span class="n">graph_str</span> <span class="o">=</span> <span class="s2">&quot;// Allowed Transitions Graph</span><span class="se">\n</span><span class="s2">digraph {&quot;</span>
+    <span class="k">if</span> <span class="n">regex</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
+        <span class="n">graph_str</span> <span class="o">+=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="se">\n\t</span><span class="s1">graph [label=&quot;Allowed Paths</span><span class="se">\n</span><span class="s1">Regular expression: </span><span class="si">{</span><span class="n">build_escaped_title</span><span class="p">(</span><span class="n">regex</span><span class="p">)</span><span class="si">}</span><span class="s1">&quot;,labelloc=&quot;t&quot;,labeljust=&quot;l&quot;]&#39;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">graph_str</span> <span class="o">+=</span> <span class="s1">&#39;</span><span class="se">\n\t</span><span class="s1">graph [label=&quot;Allowed Paths&quot;,labelloc=&quot;t&quot;,labeljust=&quot;l&quot;]&#39;</span>
+    <span class="n">graph_str</span> <span class="o">+=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="se">\n\t</span><span class="s1">rankdir=LR;size=&quot;</span><span class="si">{</span><span class="n">size</span><span class="si">}</span><span class="s1">&quot;;ratio=</span><span class="si">{</span><span class="n">ratio</span><span class="si">}</span><span class="s1">;&#39;</span>
+    <span class="c1"># Add states to the graph</span>
+    <span class="k">for</span> <span class="n">state</span> <span class="ow">in</span> <span class="n">states</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">state</span> <span class="ow">in</span> <span class="n">final_states</span><span class="p">:</span>
+            <span class="c1"># Shape the final states with double circle</span>
+            <span class="n">graph_str</span> <span class="o">+=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="se">\n\t</span><span class="si">{</span><span class="n">state</span><span class="si">}</span><span class="s1"> [label=&quot;</span><span class="si">{</span><span class="n">state</span><span class="si">}</span><span class="s1">&quot; shape=doublecircle]&#39;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Shape the other states with a circle</span>
+            <span class="n">graph_str</span> <span class="o">+=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="se">\n\t</span><span class="si">{</span><span class="n">state</span><span class="si">}</span><span class="s1"> [label=&quot;</span><span class="si">{</span><span class="n">state</span><span class="si">}</span><span class="s1">&quot; shape=circle]&#39;</span>
+    <span class="c1"># Add empty fake node for initial arrow</span>
+    <span class="n">graph_str</span> <span class="o">+=</span> <span class="s1">&#39;</span><span class="se">\n\t</span><span class="s1">node [shape=none]</span><span class="se">\n\t</span><span class="s1">&quot;&quot; [label=&quot;&quot;]</span><span class="se">\n\t</span><span class="s1">&quot;&quot; -&gt; 0&#39;</span>
+    <span class="c1"># Put together all edges from state to next_state to the graph</span>
+    <span class="n">all_edges</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">state</span><span class="p">,</span> <span class="n">transitions</span> <span class="ow">in</span> <span class="n">dfa</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">next_state</span> <span class="ow">in</span> <span class="n">transitions</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">all_edges</span><span class="p">[(</span><span class="n">state</span><span class="p">,</span> <span class="n">next_state</span><span class="p">)]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+    <span class="c1"># Add edges to the graph</span>
+    <span class="k">for</span> <span class="n">state</span> <span class="ow">in</span> <span class="n">states</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">next_state</span> <span class="ow">in</span> <span class="n">states</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">all_edges</span><span class="p">[(</span><span class="n">state</span><span class="p">,</span> <span class="n">next_state</span><span class="p">)]</span> <span class="o">!=</span> <span class="p">[]:</span>
+                <span class="n">table_str</span> <span class="o">=</span> <span class="n">create_table</span><span class="p">(</span>
+                    <span class="n">all_edges</span><span class="p">[(</span><span class="n">state</span><span class="p">,</span> <span class="n">next_state</span><span class="p">)],</span>
+                    <span class="n">tokenizer</span><span class="p">,</span>
+                    <span class="n">max_labels_per_edge</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+                    <span class="n">remove_outer_whitespace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                <span class="p">)</span>
+                <span class="k">if</span> <span class="p">(</span>
+                    <span class="n">trajectory</span> <span class="o">!=</span> <span class="p">[]</span>
+                    <span class="ow">and</span> <span class="n">state_trajectory</span> <span class="o">!=</span> <span class="p">{}</span>
+                    <span class="ow">and</span> <span class="n">state</span> <span class="ow">in</span> <span class="n">state_trajectory</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+                    <span class="ow">and</span> <span class="n">next_state</span> <span class="ow">in</span> <span class="n">state_trajectory</span><span class="p">[</span><span class="n">state</span><span class="p">]</span>
+                <span class="p">):</span>
+                    <span class="n">graph_str</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n\t</span><span class="si">{</span><span class="n">state</span><span class="si">}</span><span class="s2"> -&gt; </span><span class="si">{</span><span class="n">next_state</span><span class="si">}</span><span class="s2"> [label=&lt;</span><span class="si">{</span><span class="n">table_str</span><span class="si">}</span><span class="s2">&gt; color=red penwidth=3.0]&quot;</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">graph_str</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n\t</span><span class="si">{</span><span class="n">state</span><span class="si">}</span><span class="s2"> -&gt; </span><span class="si">{</span><span class="n">next_state</span><span class="si">}</span><span class="s2"> [label=&lt;</span><span class="si">{</span><span class="n">table_str</span><span class="si">}</span><span class="s2">&gt;]&quot;</span>
+    <span class="n">graph_str</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+    <span class="k">return</span> <span class="n">display_dot_graph</span><span class="p">(</span><span class="n">dot</span><span class="o">=</span><span class="n">graph_str</span><span class="p">,</span> <span class="n">render</span><span class="o">=</span><span class="n">render</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div><h2 id="schema_processor"><code>Schema_Processor</code></h2>
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<a id="src.litelines.transformers.schemaprocessor.SchemaProcessor"></a>
+    <div class="doc doc-contents first">
+            <p class="doc doc-class-bases">
+              Bases: <code><span title="transformers.LogitsProcessor">LogitsProcessor</span></code></p>
+
+
+        <p>Build the Logits Processor that enforces the response format</p>
+<p>Examples:</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>input_ids</code>
+            </td>
+            <td>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Token IDs of shape (batch_size, sequence_length)</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>scores</code>
+            </td>
+            <td>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Logits of shape (batch_size, vocab_size)</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The logits processor that enforces the response format</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+
+
+
+
+
+
+              <details class="quote">
+                <summary>Source code in <code>src/litelines/transformers/schemaprocessor.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 18</span>
+<span class="normal"> 19</span>
+<span class="normal"> 20</span>
+<span class="normal"> 21</span>
+<span class="normal"> 22</span>
+<span class="normal"> 23</span>
+<span class="normal"> 24</span>
+<span class="normal"> 25</span>
+<span class="normal"> 26</span>
+<span class="normal"> 27</span>
+<span class="normal"> 28</span>
+<span class="normal"> 29</span>
+<span class="normal"> 30</span>
+<span class="normal"> 31</span>
+<span class="normal"> 32</span>
+<span class="normal"> 33</span>
+<span class="normal"> 34</span>
+<span class="normal"> 35</span>
+<span class="normal"> 36</span>
+<span class="normal"> 37</span>
+<span class="normal"> 38</span>
+<span class="normal"> 39</span>
+<span class="normal"> 40</span>
+<span class="normal"> 41</span>
+<span class="normal"> 42</span>
+<span class="normal"> 43</span>
+<span class="normal"> 44</span>
+<span class="normal"> 45</span>
+<span class="normal"> 46</span>
+<span class="normal"> 47</span>
+<span class="normal"> 48</span>
+<span class="normal"> 49</span>
+<span class="normal"> 50</span>
+<span class="normal"> 51</span>
+<span class="normal"> 52</span>
+<span class="normal"> 53</span>
+<span class="normal"> 54</span>
+<span class="normal"> 55</span>
+<span class="normal"> 56</span>
+<span class="normal"> 57</span>
+<span class="normal"> 58</span>
+<span class="normal"> 59</span>
+<span class="normal"> 60</span>
+<span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span>
+<span class="normal">148</span>
+<span class="normal">149</span>
+<span class="normal">150</span>
+<span class="normal">151</span>
+<span class="normal">152</span>
+<span class="normal">153</span>
+<span class="normal">154</span>
+<span class="normal">155</span>
+<span class="normal">156</span>
+<span class="normal">157</span>
+<span class="normal">158</span>
+<span class="normal">159</span>
+<span class="normal">160</span>
+<span class="normal">161</span>
+<span class="normal">162</span>
+<span class="normal">163</span>
+<span class="normal">164</span>
+<span class="normal">165</span>
+<span class="normal">166</span>
+<span class="normal">167</span>
+<span class="normal">168</span>
+<span class="normal">169</span>
+<span class="normal">170</span>
+<span class="normal">171</span>
+<span class="normal">172</span>
+<span class="normal">173</span>
+<span class="normal">174</span>
+<span class="normal">175</span>
+<span class="normal">176</span>
+<span class="normal">177</span>
+<span class="normal">178</span>
+<span class="normal">179</span>
+<span class="normal">180</span>
+<span class="normal">181</span>
+<span class="normal">182</span>
+<span class="normal">183</span>
+<span class="normal">184</span>
+<span class="normal">185</span>
+<span class="normal">186</span>
+<span class="normal">187</span>
+<span class="normal">188</span>
+<span class="normal">189</span>
+<span class="normal">190</span>
+<span class="normal">191</span>
+<span class="normal">192</span>
+<span class="normal">193</span>
+<span class="normal">194</span>
+<span class="normal">195</span>
+<span class="normal">196</span>
+<span class="normal">197</span>
+<span class="normal">198</span>
+<span class="normal">199</span>
+<span class="normal">200</span>
+<span class="normal">201</span>
+<span class="normal">202</span>
+<span class="normal">203</span>
+<span class="normal">204</span>
+<span class="normal">205</span>
+<span class="normal">206</span>
+<span class="normal">207</span>
+<span class="normal">208</span>
+<span class="normal">209</span>
+<span class="normal">210</span>
+<span class="normal">211</span>
+<span class="normal">212</span>
+<span class="normal">213</span>
+<span class="normal">214</span>
+<span class="normal">215</span>
+<span class="normal">216</span>
+<span class="normal">217</span>
+<span class="normal">218</span>
+<span class="normal">219</span>
+<span class="normal">220</span>
+<span class="normal">221</span>
+<span class="normal">222</span>
+<span class="normal">223</span>
+<span class="normal">224</span>
+<span class="normal">225</span>
+<span class="normal">226</span>
+<span class="normal">227</span>
+<span class="normal">228</span>
+<span class="normal">229</span>
+<span class="normal">230</span>
+<span class="normal">231</span>
+<span class="normal">232</span>
+<span class="normal">233</span>
+<span class="normal">234</span>
+<span class="normal">235</span>
+<span class="normal">236</span>
+<span class="normal">237</span>
+<span class="normal">238</span>
+<span class="normal">239</span>
+<span class="normal">240</span>
+<span class="normal">241</span>
+<span class="normal">242</span>
+<span class="normal">243</span>
+<span class="normal">244</span>
+<span class="normal">245</span>
+<span class="normal">246</span>
+<span class="normal">247</span>
+<span class="normal">248</span>
+<span class="normal">249</span>
+<span class="normal">250</span>
+<span class="normal">251</span>
+<span class="normal">252</span>
+<span class="normal">253</span>
+<span class="normal">254</span>
+<span class="normal">255</span>
+<span class="normal">256</span>
+<span class="normal">257</span>
+<span class="normal">258</span>
+<span class="normal">259</span>
+<span class="normal">260</span>
+<span class="normal">261</span>
+<span class="normal">262</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">SchemaProcessor</span><span class="p">(</span><span class="n">LogitsProcessor</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Build the Logits Processor that enforces the response format</span>
+
+<span class="sd">    Examples:</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        input_ids: Token IDs of shape (batch_size, sequence_length)</span>
+<span class="sd">        scores: Logits of shape (batch_size, vocab_size)</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        The logits processor that enforces the response format</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">response_format</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]],</span> <span class="n">Type</span><span class="p">[</span><span class="n">Any</span><span class="p">]],</span>
+        <span class="n">tokenizer</span><span class="p">:</span> <span class="n">PreTrainedTokenizer</span><span class="p">,</span>
+        <span class="n">include_tool_call</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">tool_call_start</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&lt;tool_call&gt;&quot;</span><span class="p">,</span>
+        <span class="n">tool_call_end</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&lt;/tool_call&gt;&quot;</span><span class="p">,</span>
+        <span class="n">allow_preamble</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">whitespace_pattern</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;[\n\t\r ]*&quot;</span><span class="p">,</span>
+        <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">max_same_state_visit_count</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">response_format</span> <span class="o">=</span> <span class="n">response_format</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tokenizer</span> <span class="o">=</span> <span class="n">tokenizer</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">include_tool_call</span> <span class="o">=</span> <span class="n">include_tool_call</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tool_call_start</span> <span class="o">=</span> <span class="n">tool_call_start</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tool_call_end</span> <span class="o">=</span> <span class="n">tool_call_end</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">allow_preamble</span> <span class="o">=</span> <span class="n">allow_preamble</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">whitespace_pattern</span> <span class="o">=</span> <span class="n">whitespace_pattern</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dfa</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span> <span class="o">=</span> <span class="n">verbose</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">max_same_state_visit_count</span> <span class="o">=</span> <span class="n">max_same_state_visit_count</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">same_state_visit_count</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">current_state</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">previous_state</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">final_states</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">selected_token</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">trajectory</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">previous_input_ids</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">trigger_token_ids</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">triggered</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">__build_dfa</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dfa</span> <span class="o">=</span> <span class="n">build_dfa</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">response_format</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">tokenizer</span><span class="p">,</span>
+            <span class="n">include_tool_call</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">include_tool_call</span><span class="p">,</span>
+            <span class="n">tool_call_start</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">tool_call_start</span><span class="p">,</span>
+            <span class="n">tool_call_end</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">tool_call_end</span><span class="p">,</span>
+            <span class="n">whitespace_pattern</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">whitespace_pattern</span><span class="p">,</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">__create_dfa</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">response_format</span><span class="p">,</span> <span class="nb">dict</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">all</span><span class="p">(</span>
+            <span class="nb">isinstance</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span>
+            <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="nb">dict</span><span class="p">)</span>
+            <span class="ow">and</span> <span class="nb">all</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">k2</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">v2</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span> <span class="k">for</span> <span class="n">k2</span><span class="p">,</span> <span class="n">v2</span> <span class="ow">in</span> <span class="n">v</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+            <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">response_format</span><span class="p">)</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+        <span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">dfa</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">response_format</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">response_format</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__build_dfa</span><span class="p">()</span>
+        <span class="k">elif</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">response_format</span><span class="p">,</span> <span class="s2">&quot;model_json_schema&quot;</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__build_dfa</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Cannot parse schema </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">response_format</span><span class="si">}</span><span class="s2">. The schema must be either &quot;</span>
+                <span class="o">+</span> <span class="s2">&quot;a Pydantic model, a dict[int, dict[int, int]] or a string that contains the JSON &quot;</span>
+                <span class="o">+</span> <span class="s2">&quot;schema specification&quot;</span>
+            <span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">show_graph</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">trajectory</span> <span class="o">==</span> <span class="p">[]:</span>  <span class="c1"># first time</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__create_dfa</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">draw_dfa</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">response_format</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">tokenizer</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">trajectory</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">include_tool_call</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">tool_call_start</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">tool_call_end</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">whitespace_pattern</span><span class="p">,</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">reset_state</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Reset the processor to its initial state&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">current_state</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">final_states</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">selected_token</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">trajectory</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__call__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">input_ids</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">LongTensor</span><span class="p">,</span> <span class="n">scores</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span><span class="p">:</span>
+        <span class="n">scores_processed</span> <span class="o">=</span> <span class="n">scores</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
+        <span class="n">token_chosen_id</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">scores_processed</span><span class="p">)</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">previous_input_ids</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="c1"># Check if we&#39;re continuing from the previous sequence</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">torch</span><span class="o">.</span><span class="n">equal</span><span class="p">(</span><span class="n">input_ids</span><span class="p">[:,</span> <span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">previous_input_ids</span><span class="p">):</span>
+                <span class="c1"># If the history doesn&#39;t match, reset the state</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">reset_state</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">final_states</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>  <span class="c1"># first time</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">dfa</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">__create_dfa</span><span class="p">()</span>
+            <span class="n">states</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dfa</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">final_states</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="n">state</span> <span class="k">for</span> <span class="n">state</span> <span class="ow">in</span> <span class="n">states</span> <span class="k">if</span> <span class="n">state</span> <span class="ow">not</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">dfa</span><span class="p">)</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+            <span class="p">}</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;states: </span><span class="si">{</span><span class="n">states</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;final states: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">final_states</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">previous_input_ids</span> <span class="o">=</span> <span class="n">input_ids</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">allow_preamble</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">current_state</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># dfa active</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">triggered</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">current_state</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>  <span class="c1"># inactive</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">triggered</span> <span class="o">=</span> <span class="kc">False</span>
+                <span class="c1"># add eos to triggers</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">trigger_token_ids</span> <span class="o">=</span> <span class="p">[</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">tokenizer</span><span class="o">.</span><span class="n">eos_token_id</span><span class="p">,</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">tokenizer</span><span class="o">.</span><span class="n">pad_token_id</span><span class="p">,</span>
+                <span class="p">]</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">include_tool_call</span><span class="p">:</span>  <span class="c1"># it should be a tool call</span>
+                    <span class="k">if</span> <span class="p">(</span>
+                        <span class="nb">len</span><span class="p">(</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">tokenizer</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+                                <span class="bp">self</span><span class="o">.</span><span class="n">tool_call_start</span><span class="p">,</span> <span class="n">add_special_tokens</span><span class="o">=</span><span class="kc">False</span>
+                            <span class="p">)</span>
+                        <span class="p">)</span>
+                        <span class="o">&gt;</span> <span class="mi">1</span>
+                    <span class="p">):</span>
+                        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">tool_call_start</span><span class="si">}</span><span class="s2"> is not a valid token.&quot;</span>
+                        <span class="p">)</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">trigger_token_ids</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">tokenizer</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">tool_call_start</span><span class="p">,</span> <span class="n">add_special_tokens</span><span class="o">=</span><span class="kc">False</span>
+                        <span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+                    <span class="p">)</span>
+                    <span class="c1"># not the best solution since it excludes &#39;&lt;&#39; in the preamble</span>
+                    <span class="n">tokens_containing_open_tool_call</span> <span class="o">=</span> <span class="p">[</span>
+                        <span class="n">token_id</span>
+                        <span class="k">for</span> <span class="n">token_id</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tokenizer</span><span class="o">.</span><span class="n">vocab_size</span><span class="p">)</span>
+                        <span class="k">if</span> <span class="s2">&quot;&lt;&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">tokenizer</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">token_id</span><span class="p">)</span>
+                    <span class="p">]</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">trigger_token_ids</span> <span class="o">+=</span> <span class="n">tokens_containing_open_tool_call</span>
+                <span class="k">else</span><span class="p">:</span>  <span class="c1"># it should be json</span>
+                    <span class="n">tokens_containing_open_curly_bracket</span> <span class="o">=</span> <span class="p">[</span>
+                        <span class="n">token_id</span>
+                        <span class="k">for</span> <span class="n">token_id</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tokenizer</span><span class="o">.</span><span class="n">vocab_size</span><span class="p">)</span>
+                        <span class="k">if</span> <span class="s2">&quot;{&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">tokenizer</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">token_id</span><span class="p">)</span>
+                    <span class="p">]</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">trigger_token_ids</span> <span class="o">+=</span> <span class="n">tokens_containing_open_curly_bracket</span>
+
+        <span class="k">else</span><span class="p">:</span>  <span class="c1"># not the first time</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">selected_token</span> <span class="o">=</span> <span class="n">input_ids</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_state</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">trajectory</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">selected_token</span><span class="p">)</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\x1b</span><span class="s2">[32mselected token: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">selected_token</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="nb">repr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tokenizer</span><span class="o">.</span><span class="n">decode</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">selected_token</span><span class="p">]))</span><span class="si">}</span><span class="se">\x1b</span><span class="s2">[0m&quot;</span>
+                <span class="p">)</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_state</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;mapping: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">dfa</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">current_state</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="c1"># activate it if it is triggered</span>
+        <span class="k">if</span> <span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">current_state</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span> <span class="ow">and</span> <span class="n">token_chosen_id</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">trigger_token_ids</span>
+        <span class="p">):</span>  <span class="c1"># if dfa is inactive</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\x1b</span><span class="s2">[31mtrigger token: </span><span class="si">{</span><span class="n">token_chosen_id</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">tokenizer</span><span class="o">.</span><span class="n">decode</span><span class="p">([</span><span class="n">token_chosen_id</span><span class="p">])</span><span class="si">}</span><span class="se">\x1b</span><span class="s2">[0m&quot;</span>
+                <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">triggered</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">current_state</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_state</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>  <span class="c1"># if dfa is active</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">triggered</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">current_state</span> <span class="o">=</span> <span class="mi">0</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">triggered</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">previous_state</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_state</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">current_state</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dfa</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">current_state</span><span class="p">][</span><span class="bp">self</span><span class="o">.</span><span class="n">selected_token</span><span class="p">]</span>
+                <span class="k">if</span> <span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">previous_state</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_state</span>
+                    <span class="ow">and</span> <span class="n">re</span><span class="o">.</span><span class="n">fullmatch</span><span class="p">(</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">whitespace_pattern</span><span class="p">,</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">tokenizer</span><span class="o">.</span><span class="n">decode</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">selected_token</span><span class="p">]),</span>
+                    <span class="p">)</span>
+                    <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+                <span class="p">):</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">same_state_visit_count</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">same_state_visit_count</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">previous_input_ids</span> <span class="o">=</span> <span class="n">input_ids</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
+
+        <span class="n">vocab_tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">scores</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">device</span><span class="o">=</span><span class="n">scores</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\x1b</span><span class="s2">[34mcurrent state: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">current_state</span><span class="si">}</span><span class="se">\x1b</span><span class="s2">[0m&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\x1b</span><span class="s2">[33msame state visit count: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">same_state_visit_count</span><span class="si">}</span><span class="se">\x1b</span><span class="s2">[0m&quot;</span>
+            <span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_state</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+            <span class="c1"># print(self.trigger_token_ids)</span>
+            <span class="n">forbidden_tokens</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">trigger_token_ids</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">scores</span><span class="o">.</span><span class="n">device</span>
+            <span class="p">)</span>
+            <span class="n">forbidden_tokens_mask</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">vocab_tensor</span><span class="p">,</span> <span class="n">forbidden_tokens</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>  <span class="c1"># if dfa is active</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_state</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">final_states</span><span class="p">:</span>
+                <span class="n">allowed_tokens</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">tokenizer</span><span class="o">.</span><span class="n">eos_token_id</span><span class="p">]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">same_state_visit_count</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_same_state_visit_count</span><span class="p">:</span>
+                    <span class="n">allowed_tokens</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dfa</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">current_state</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="c1"># Remove tokens that send you to the same current state</span>
+                    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span><span class="p">:</span>
+                        <span class="nb">print</span><span class="p">(</span>
+                            <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\x1b</span><span class="s2">[31mmaximum same state visit count reached for state </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">current_state</span><span class="si">}</span><span class="se">\x1b</span><span class="s2">[0m&quot;</span>
+                        <span class="p">)</span>
+                    <span class="n">mapping</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dfa</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">current_state</span><span class="p">]</span>
+                    <span class="n">allowed_tokens</span> <span class="o">=</span> <span class="p">[</span>
+                        <span class="n">key</span>
+                        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">mapping</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+                        <span class="k">if</span> <span class="n">value</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_state</span>
+                    <span class="p">]</span>
+            <span class="n">allowed_tokens</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">allowed_tokens</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">scores</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+            <span class="n">forbidden_tokens_mask</span> <span class="o">=</span> <span class="o">~</span><span class="n">torch</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">vocab_tensor</span><span class="p">,</span> <span class="n">allowed_tokens</span><span class="p">)</span>
+
+        <span class="n">scores_processed</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">forbidden_tokens_mask</span><span class="p">,</span> <span class="o">-</span><span class="n">torch</span><span class="o">.</span><span class="n">inf</span><span class="p">,</span> <span class="n">scores</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\x1b</span><span class="s2">[35mwill be chosen: </span><span class="si">{</span><span class="n">torch</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">scores_processed</span><span class="p">)</span><span class="o">.</span><span class="n">item</span><span class="p">()</span><span class="si">}</span><span class="se">\x1b</span><span class="s2">[0m&quot;</span>
+            <span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">scores_processed</span>
+</code></pre></div></td></tr></table></div>
+              </details>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="src.litelines.transformers.schemaprocessor.SchemaProcessor.reset_state" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">reset_state</span><span class="p">()</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Reset the processor to its initial state</p>
+
+
+            <details class="quote">
+              <summary>Source code in <code>src/litelines/transformers/schemaprocessor.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">reset_state</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Reset the processor to its initial state&quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">current_state</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">final_states</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">selected_token</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">trajectory</span> <span class="o">=</span> <span class="p">[]</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 - The Litelines Developers
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.92b07e13.min.js"></script>
+      
+    
+  </body>
+</html>
