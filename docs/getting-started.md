@@ -92,7 +92,7 @@ Let's start with a simple example.
 
 === "vllm"
 
-```dot
+```graphviz dot attack_plan0.svg
 // Allowed Transitions Graph
 digraph {
 	graph [label="Allowed Paths
@@ -238,7 +238,7 @@ Regular expression: [\\n\\t ]*\\{[\\n\\t ]*\"label\"[\\n\\t ]*:[\\n\\t ]*(\"posi
 === "vllm"
 
 
-```dot
+```graphviz dot attack_plan1.svg
 // Allowed Transitions Graph
 digraph {
 	graph [label="Allowed Paths
@@ -359,6 +359,7 @@ Regular expression: [\\n\\t ]*\\{[\\n\\t ]*\"label\"[\\n\\t ]*:[\\n\\t ]*(\"posi
 	27 -> 25 [label=<<table border="0" cellborder="1" cellspacing="0"><tr><td bgcolor="#ffebcd">id</td><td bgcolor="#ffebcd">token</td></tr><tr><td align="right"><font color="#00b4d8">1371</font></td><td>be</td></tr></table>>]
 }
 ```
+
 ## Your First Streamed Structured Generation
 
 Since Litelines gives you the processor, you can do whatever you want with it. In particular, you can generate a streaming response like you would normally do (just don't forget to add the processor).
