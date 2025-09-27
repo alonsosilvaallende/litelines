@@ -19,8 +19,24 @@ nav:
   - reference.md
 
 markdown_extensions:
+  - mkdocs_graphviz:
+      light_theme: 000000      # Any HTML Color Name or any HTML Hexadecimal color code WITHOUT the `#` sign
+      dark_theme: FFFFFF       # Any HTML Color Name or any HTML Hexadecimal color code WITHOUT the `#` sign
+      color: 000000            # Any HTML Color Name or any HTML Hexadecimal color code WITHOUT the `#` sign
+      bgcolor: none            # Any HTML Color Name or any HTML Hexadecimal color code WITHOUT the `#` sign
+      graph_color: 789ABC      # Any HTML Color Name or any HTML Hexadecimal color code WITHOUT the `#` sign
+      graph_fontcolor: 789ABC  # Any HTML Color Name or any HTML Hexadecimal color code WITHOUT the `#` sign
+      node_color: 000000       # Any HTML Color Name or any HTML Hexadecimal color code WITHOUT the `#` sign
+      node_fontcolor: 789ABC   # Any HTML Color Name or any HTML Hexadecimal color code WITHOUT the `#` sign
+      edge_color: 000000       # Any HTML Color Name or any HTML Hexadecimal color code WITHOUT the `#` sign
+      edge_fontcolor: 789ABC   # Any HTML Color Name or any HTML Hexadecimal color code WITHOUT the `#` sign
+      priority: 75             # The priority for this Markdown Extension (DEFAULT : 75)
   - pymdownx.superfences
   - pymdownx.tabbed:
       alternate_style: true
+
+extra_javascript:
+  - https://cdn.jsdelivr.net/gh/rod2ik/cdn@main/mkdocs/javascripts/mkdocs-graphviz.js
+
 
 copyright: Copyright &copy; 2025 - The Litelines Developers

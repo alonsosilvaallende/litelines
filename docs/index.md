@@ -6,11 +6,11 @@ Litelines is a lightweight Python library designed for structured generation wit
 
 ## Key Features
 
-- Structured Generation: Control and guide LLM outputs with predefined structures and constraints
-- State Transition Visualization: Interactive visual tools to monitor and analyze how your LLM progresses through different generation states
-- Lightweight Design: Minimal dependencies and efficient performance for seamless integration
-- Developer-Friendly: Intuitive API designed for both research and production environments
-- Debugging & Inspection: Deep insights into LLM behavior through comprehensive state tracking
+- **Structured Generation**: Control and guide LLM outputs with predefined structures and constraints
+- **State Transition Visualization**: Interactive visual tools to monitor and analyze how your LLM progresses through different generation states
+- **Lightweight Design**: Minimal dependencies and efficient performance for seamless integration
+- **Developer-Friendly**: Intuitive API designed for both research and production environments
+- **Debugging & Inspection**: Deep insights into LLM behavior through comprehensive state tracking
 
 ## Why Choose Litelines?
 
@@ -22,11 +22,3 @@ Perfect for developers who need to:
 - Ensure consistent, structured outputs
 - Visualize and analyze model behavior
 - Build reliable LLM-powered applications
-
-## Alternatives
-
-Structured generation currently has some other great open source libraries:
-
-- [Outlines](https://dottxt-ai.github.io/outlines)
-- [XGrammar](https://xgrammar.mlc.ai/docs/)
-- [Guidance](https://github.com/guidance-ai/guidance)
