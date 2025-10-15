@@ -21,6 +21,8 @@ class SchemaProcessor(LogitsProcessor):
     Examples:
 
     Args:
+        input_ids: Token IDs of shape (batch_size, sequence_length)
+        scores: Logits of shape (batch_size, vocab_size)
 
     Returns:
         The logits processor that enforces the response format
@@ -102,7 +104,7 @@ class SchemaProcessor(LogitsProcessor):
 
     def reset_state(self):
         """Reset the processor to its initial state"""
-        self.current_state = 0
+        self.current_state = 0 if not self.allow_preamble else -1
         self.final_states = None
         self.selected_token = None
         self.trajectory = []
