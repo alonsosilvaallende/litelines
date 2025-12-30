@@ -1,6 +1,6 @@
 [project]
 name = "litelines"
-version = "0.1.2"
+version = "0.1.3"
 description = "Customize, control, and enhance LLM generation with logits processors, featuring visualization capabilities to inspect and understand state transitions"
 readme = "README.md"
 requires-python = ">=3.8"
