@@ -9,3 +9,6 @@ site/
 
 # Virtual environments
 .venv
+
+# Jupyter notebooks checkpoints
+src/litelines/transformers/.ipynb_checkpoints/
