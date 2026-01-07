@@ -71,7 +71,11 @@ def display_dot_graph(
     elif _in_marimo_notebook():
         import marimo as mo
 
-        return mo.Html(f"{graph.decode()}")
+        return mo.Html(f"""
+            <div style="overflow: auto; width: 100%; height: 100%;">
+              {graph.decode()}
+            </div>
+            """)
     else:
         from pathlib import Path
 
