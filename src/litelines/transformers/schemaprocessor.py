@@ -196,7 +196,6 @@ class SchemaProcessor(LogitsProcessor):
                 self.current_state = -torch.ones(
                     self.batch_size, dtype=torch.long, device=self.device
                 )
-
                 if (
                     not self.trigger_token_ids
                 ):  # if no trigger token list has been given
@@ -220,10 +219,7 @@ class SchemaProcessor(LogitsProcessor):
                         self.tokenizer.eos_token_id,
                         self.tokenizer.pad_token_id,
                     ]
-            if isinstance(self.trigger_token_ids, list):
-                self.trigger_token_ids = torch.tensor(
-                    self.trigger_token_ids, dtype=torch.long, device=self.device
-                )
+            
             self.__precompute_dfa_tensors()
             self.__precompute_eos_only_mask()
         else:
@@ -261,8 +257,9 @@ class SchemaProcessor(LogitsProcessor):
             # Handle preamble counter
             inactive_state_mask = torch.isin(self.current_state, self.inactive_state)
             self.preamble_tokens_counter[inactive_state_mask] += 1
-
-            triggered = torch.isin(selected_tokens, self.trigger_token_ids)
+            triggered = torch.isin(selected_tokens, torch.tensor(
+                    self.trigger_token_ids, dtype=torch.long, device=self.device
+                ))
             self.current_state = torch.where(
                 inactive_state_mask & triggered,
                 torch.zeros_like(self.current_state),
