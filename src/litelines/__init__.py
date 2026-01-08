@@ -1,4 +1,4 @@
-__version__ = "0.1.4"
+__version__ = "0.1.5"
 
 from litelines.build_regex import build_regex
 from litelines.build_dfa import build_dfa
